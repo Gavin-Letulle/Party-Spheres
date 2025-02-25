@@ -1,3 +1,17 @@
-<%- include('./partials/header') %>
-<p>Welcome to <%= title %></p>
+<%- include('./partials/header', { currentPage: 'home'}) %>
+<div style="text-align: center">
+    <button class="big-button" id="playGameButton" style="margin-top: 75px;">
+        PLAY GAME
+    </button>
+</div>
+<div style="text-align: center">
+    <button class="big-button" id="leaderboardButton" style="margin-top: 45px;">
+        LEADERBOARD
+    </button>
+</div>
+<div style="text-align: center">
+    <button class="big-button" id="accountButton" style="margin-top: 45px;">
+        ACCOUNT
+    </button>
+</div>
 <%- include('./partials/footer') %>
