@@ -82,7 +82,7 @@ a {
   border: 2px solid black;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.15s ease;
   text-align: center;
   font-family: "Lacquer", serif;
   text-shadow: 
