@@ -1,8 +1,117 @@
+html {
+  background-color: rgb(247, 236, 222);
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+
+.heading {
+  background: linear-gradient(to right, #73ff8f, #02dc2d);
+  color: white;
+  font-family: "Lacquer", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 60px;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 20px;
+  text-shadow: 
+    -1px -1px 0 black,  
+      1px -1px 0 black,
+    -1px  1px 0 black,
+      1px  1px 0 black;
+}
+
+header {
+  display: flex;
+  background-color: #333333;
+  color: white;
+  font-size: 15px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  font-family: "Lacquer", serif;
+  font-style: normal;
+}
+
+.content {
+  font-size: 16px;
+  color: black;
+  /* ALTERNATIVE FONT: font-family: "Libre Baskerville", serif; */
+  font-family: "Lacquer", serif;
+  font-weight: 400;
+  font-style: normal;
+  padding: 8px;
 }
 
 a {
   color: #00B7FF;
+}
+
+.link-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  text-align: center;
+}
+
+.link-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.link-item a {
+  color: white;
+  text-decoration: none;
+}
+
+.link-item a:hover {
+  text-decoration: underline;
+}
+
+.link-item a.active {
+  text-decoration: underline;
+}
+
+.big-button {
+  padding: 10px 20px;
+  font-size: 30px;
+  color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  font-family: "Lacquer", serif;
+  text-shadow: 
+    -1px -1px 0 black,  
+      1px -1px 0 black,
+    -1px  1px 0 black,
+      1px  1px 0 black;
+}
+
+#playGameButton {
+  background-color: #1eecfe;
+}
+
+#leaderboardButton {
+  background-color: #ffc74f;
+}
+
+#accountButton {
+  background-color: #f39af6;
+}
+
+#playGameButton:hover {
+  background-color: #17c3da;
+}
+
+#leaderboardButton:hover {
+  background-color: #e6b244;
+}
+
+#accountButton:hover {
+  background-color: #e288e3;
 }
