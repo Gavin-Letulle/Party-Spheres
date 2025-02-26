@@ -1,3 +1,5 @@
+require('dotenv').config();
+console.log('Loaded ENV Variables:', process.env.DB_HOST, process.env.DB_USER);
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
