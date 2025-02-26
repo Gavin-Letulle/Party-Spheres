@@ -11,6 +11,13 @@ const accountRouter = require('./routes/account');
 const leaderboardRouter = require('./routes/leaderboard');
 const gameRouter = require('./routes/game');
 
+const db = require('./connection'); // ✅ Import the correct database connection file
+
+// ✅ Test MySQL Connection
+db.query('SELECT NOW() AS time')
+    .then(([rows]) => console.log('✅ Database Test Successful:', rows))
+    .catch(err => console.error('❌ Database Query Failed:', err.message));
+
 var app = express();
 
 // view engine setup
