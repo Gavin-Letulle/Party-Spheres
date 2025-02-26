@@ -11,7 +11,7 @@ const accountRouter = require('./routes/account');
 const leaderboardRouter = require('./routes/leaderboard');
 const gameRouter = require('./routes/game');
 
-const db = require('./connection'); // ✅ Import the correct database connection file
+const db = require('./database/connection'); // ✅ Import the correct database connection file
 
 // ✅ Test MySQL Connection
 db.query('SELECT NOW() AS time')
