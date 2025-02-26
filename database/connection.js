@@ -1,15 +1,23 @@
 const mysql = require('mysql2');
+require('dotenv').config();
 
-const connection = mysql.createConnection({
-    host: '127.0.0.1',
-    user: 'root', //We will probably want to change root to something else, not sure how that works
-    password: 'gavsql156', //Change password to your mysql password (might be your actual computer login password, not sure how to make this global yet)
-    database: 'partyspheres', //Make sure this is the same name as the database
+const pool = mysql.createPool({
+    host: process.env.DB_HOST, 
+    user: process.env.DB_USER, 
+    password: process.env.DB_PASS, 
+    database: process.env.DB_NAME,
+    waitForConnections: true,
+    connectionLimit: 20,
+    queueLimit: 0
 });
 
-connection.connect((err => {
-    if(err) throw err;
-    console.log('MySQL connected successfully!');
-}));
+pool.getConnection((err, connection) => {
+    if (err) {
+        console.error('MySQL Connection Error:', err);
+        return;
+    }
+    console.log('✅ MySQL connected successfully!');
+    connection.release(); // Release the connection back to the pool
+});
 
-module.exports = connection;
+module.exports = pool.promise();
