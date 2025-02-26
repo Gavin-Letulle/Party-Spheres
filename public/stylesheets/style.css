@@ -9,18 +9,24 @@ body {
 .heading {
   background: linear-gradient(to right, #73ff8f, #02dc2d);
   color: white;
-  font-family: "Lacquer", serif;
+  /*font-family: "Lacquer", serif;
   font-weight: 400;
-  font-style: normal;
+  font-style: normal; */
   font-size: 60px;
+  font-family: "DynaPuff", serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
   justify-content: center;
   align-items: center;
   padding: 15px 20px;
   text-shadow: 
-    -1px -1px 0 black,  
-      1px -1px 0 black,
-    -1px  1px 0 black,
-      1px  1px 0 black;
+    -1.25px -1.25px 0 black,  
+      1.25px -1.25px 0 black,
+    -1.25px  1.25px 0 black,
+      1.25px  1.25px 0 black;
 }
 
 header {
@@ -31,17 +37,30 @@ header {
   justify-content: center;
   align-items: center;
   padding: 10px 20px;
-  font-family: "Lacquer", serif;
+  /*font-family: "Lacquer", serif;
+  font-style: normal; */
+  font-family: "DynaPuff", serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
   font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+
 }
 
 .content {
   font-size: 16px;
   color: black;
   /* ALTERNATIVE FONT: font-family: "Libre Baskerville", serif; */
-  font-family: "Lacquer", serif;
-  font-weight: 400;
+  font-family: "DynaPuff", serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
   font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+  /*font-family: "Lacquer", serif;
+  font-weight: 400; 
+  font-style: normal; */
   padding: 8px;
 }
 
@@ -82,9 +101,15 @@ a {
   border: 2px solid black;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.15s ease;
   text-align: center;
-  font-family: "Lacquer", serif;
+  /*font-family: "Lacquer", serif; */
+  font-family: "DynaPuff", serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
   text-shadow: 
     -1px -1px 0 black,  
       1px -1px 0 black,
