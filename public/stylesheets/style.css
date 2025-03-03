@@ -9,24 +9,20 @@ body {
 .heading {
   background: linear-gradient(to right, #73ff8f, #02dc2d);
   color: white;
-  /*font-family: "Lacquer", serif;
-  font-weight: 400;
-  font-style: normal; */
   font-size: 60px;
   font-family: "DynaPuff", serif;
   font-optical-sizing: auto;
   font-weight: weight;
   font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
+  font-variation-settings: "wdth" 100;
   justify-content: center;
   align-items: center;
   padding: 15px 20px;
   text-shadow: 
     -1.25px -1.25px 0 black,  
-      1.25px -1.25px 0 black,
+    1.25px -1.25px 0 black,
     -1.25px  1.25px 0 black,
-      1.25px  1.25px 0 black;
+    1.25px  1.25px 0 black;
 }
 
 header {
@@ -37,30 +33,21 @@ header {
   justify-content: center;
   align-items: center;
   padding: 10px 20px;
-  /*font-family: "Lacquer", serif;
-  font-style: normal; */
   font-family: "DynaPuff", serif;
   font-optical-sizing: auto;
   font-weight: weight;
   font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
-
+  font-variation-settings: "wdth" 100;
 }
 
 .content {
   font-size: 16px;
   color: black;
-  /* ALTERNATIVE FONT: font-family: "Libre Baskerville", serif; */
   font-family: "DynaPuff", serif;
   font-optical-sizing: auto;
   font-weight: weight;
   font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
-  /*font-family: "Lacquer", serif;
-  font-weight: 400; 
-  font-style: normal; */
+  font-variation-settings: "wdth" 100;
   padding: 8px;
 }
 
@@ -103,18 +90,16 @@ a {
   cursor: pointer;
   transition: background-color 0.15s ease;
   text-align: center;
-  /*font-family: "Lacquer", serif; */
   font-family: "DynaPuff", serif;
   font-optical-sizing: auto;
   font-weight: weight;
   font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
+  font-variation-settings: "wdth" 100;
   text-shadow: 
     -1px -1px 0 black,  
-      1px -1px 0 black,
+    1px -1px 0 black,
     -1px  1px 0 black,
-      1px  1px 0 black;
+    1px  1px 0 black;
 }
 
 #playGameButton {
@@ -139,4 +124,66 @@ a {
 
 #accountButton:hover {
   background-color: #e288e3;
+}
+
+.leaderboard {
+  background: #ffc74f;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid black;
+}
+
+.leaderboard h2 {
+  font-size: 36px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-shadow: 
+    -1.25px -1.25px 0 black,  
+    1.25px -1.25px 0 black,
+    -1.25px  1.25px 0 black,
+    1.25px  1.25px 0 black;
+}
+
+.leaderboard-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.leaderboard-table th {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  text-shadow: 
+    -1.25px -1.25px 0 black,  
+    1.25px -1.25px 0 black,
+    -1.25px  1.25px 0 black,
+    1.25px  1.25px 0 black;
+  background: #ffc74f;
+}
+
+.leaderboard-table td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.leaderboard-table th {
+  background-color: #ffc74f;
+  color: white;
+  font-size: 18px;
+}
+
+.leaderboard-table tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.leaderboard-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.leaderboard-table td {
+  font-size: 16px;
 }
