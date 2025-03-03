@@ -15,13 +15,16 @@
           <label for="password">Password</label>
           <input type="password" id="password" name="password" placeholder="Choose a password" required>
         </div>
+        <div class="form-group">
+          <label for="verify-password">Verify Password</label>
+          <input type="password" id="verify-password" name="verify-password" placeholder="Re-enter your password" required>
+        </div>
         <button type="submit" class="big-button" id="signupButton">Sign Up</button>
       </form>
     </div>
-
-    <!-- Link to login page below the form, outside the pink background -->
     <div class="login-link">
       <p>Already have an account? <a href="/login">Login here</a></p>
     </div>
   </div>
 <%- include('./partials/footer') %>
+
