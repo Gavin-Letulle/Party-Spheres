@@ -7,9 +7,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var homeRouter = require('./routes/home');
-const accountRouter = require('./routes/account');
+const accountRouterRouter = require('./routes/accountRouter');
+const accountRouter = require('./routes/account')
 const leaderboardRouter = require('./routes/leaderboard');
 const gameRouter = require('./routes/game');
+const loginRouter = require('./routes/login');
+const signupRouter = require('./routes/signup');
 
 const db = require('./database/connection'); // ✅ Import the correct database connection file
 
@@ -31,9 +34,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', homeRouter);
-app.use('/account', accountRouter);
+app.use('/accountRouter', accountRouterRouter);
 app.use('/leaderboard', leaderboardRouter);
 app.use('/game', gameRouter);
+app.use('/login', loginRouter);
+app.use('/sign-up', signupRouter);
+app.use('/account', accountRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

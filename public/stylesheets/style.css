@@ -126,6 +126,16 @@ a {
   background-color: #e288e3;
 }
 
+#signupButton {
+  background-color: #73ff8f;
+  width: 100%;
+  margin-top: 15px;
+}
+
+#signupButton:hover {
+  background-color: #02dc2d;
+}
+
 .leaderboard {
   background: #ffc74f;
   padding: 20px;
@@ -186,4 +196,65 @@ a {
 
 .leaderboard-table td {
   font-size: 16px;
+}
+
+.signup-form {
+  background-color: #f39af6; /* Pink background like the account button */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid black;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centering the inputs */
+}
+
+.signup-form h2 {
+  font-size: 36px;
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+  text-shadow: 
+    -1.25px -1.25px 0 black,  
+    1.25px -1.25px 0 black,
+    -1.25px  1.25px 0 black,
+    1.25px  1.25px 0 black;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  font-size: 18px;
+  color: white;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-top: 5px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-link a {
+  color: #1eecfe;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
 }

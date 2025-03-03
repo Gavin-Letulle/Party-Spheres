@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const accountButton = document.getElementById("accountButton");
     if (accountButton) {
         accountButton.addEventListener('click', function () {
-        window.location.href = "/account";
+        window.location.href = "/accountRouter";
       });
     }
   });
