@@ -199,7 +199,7 @@ a {
 }
 
 .signup-form {
-  background-color: #f39af6; /* Pink background like the account button */
+  background-color: #f39af6;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -209,7 +209,7 @@ a {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centering the inputs */
+  align-items: center;
 }
 
 .signup-form h2 {
@@ -251,10 +251,157 @@ a {
 }
 
 .login-link a {
-  color: #1eecfe;
+  color: #2ae1f1;
   text-decoration: none;
 }
 
 .login-link a:hover {
   text-decoration: underline;
+}
+
+.account-details {
+  background-color: #f39af6;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid black;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.account-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.account-info {
+  width: 100%;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.account-item {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.account-item strong {
+  font-weight: bold;
+  color: white;
+  text-shadow: 
+    -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px  1px 0 black,
+    1px  1px 0 black;
+}
+
+.account-item span {
+  margin-left: 10px;
+  color: black;
+}
+
+h2 {
+  font-size: 36px;
+  color: white;
+  text-shadow: 
+    -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px  1px 0 black,
+    1px  1px 0 black;
+  margin-bottom: 20px;
+  align-items: center;
+  text-align: center;
+}
+
+#editButton {
+  width: auto;
+  font-size: 18px;
+  background-color: #ffc74f;
+  text-decoration: none;
+  display: block;
+  max-width: 250px;
+  margin: 20px auto 0 auto;
+  margin-top: 10px;
+}
+
+#editButton:hover {
+  background-color: #e6b244;
+}
+
+#profileImage {
+  display: flex;
+  align-items: flex-start;
+  margin-left: 15px;
+}
+
+#profileImage img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid black;
+}
+
+.account-form {
+  background-color: #f39af6;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid black;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.account-form h2 {
+  font-size: 36px;
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+  text-shadow: 
+    -1.25px -1.25px 0 black,  
+    1.25px -1.25px 0 black,
+    -1.25px  1.25px 0 black,
+    1.25px  1.25px 0 black;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  font-size: 18px;
+  color: white;
+  text-shadow: 
+    -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px  1px 0 black,
+    1px  1px 0 black;
+}
+.form-group input, .form-group textarea{
+  border: 2px solid #000000;
+}
+
+.account-form-group input, .account-form-group textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  background-color: white;
+  justify-content: center;
+  max-width: 560px;
+}
+
+.account-form-group textarea {
+  resize: vertical;
 }

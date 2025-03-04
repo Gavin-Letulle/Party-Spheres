@@ -1,3 +1,25 @@
 <%- include('./partials/header', { currentPage: 'account'}) %>
-<p><%= title %></p>
+<div class="account-details">
+    <h2>Account Details</h2>
+    <div class="account-group">
+        <div class="account-info">
+            <div class="account-item">
+                <strong>Username:</strong> <span>john_doe</span>
+            </div>
+            <div class="account-item">
+                <strong>Email:</strong> <span>john_doe@example.com</span>
+            </div>
+            <div class="account-item">
+                <strong>Full Name:</strong> <span>John Doe</span>
+            </div>
+            <div class="account-item">
+                <strong>Bio:</strong> <span>Software Developer, Tech Enthusiast, Game Lover</span>
+            </div>
+        </div>
+        <div id="profileImage">
+            <img src="/images/ps1.png" alt="No image">
+        </div>
+    </div>
+    <a href="/account/edit" class="big-button" id="editButton">Edit Account</a>
+</div>
 <%- include('./partials/footer') %>

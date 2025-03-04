@@ -1,0 +1,30 @@
+<%- include('./partials/header', { currentPage: 'editAccount'}) %>
+<div class="account-form">
+    <h2>Edit Account Details</h2>
+    <form action="/account/update" method="POST">
+        <div class="account-form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" value="john_doe" required />
+        </div>
+        <div class="account-form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="john_doe@example.com" required />
+        </div>
+        <div class="account-form-group">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" value="John Doe" required />
+        </div>
+        <div class="account-form-group">
+            <label for="bio">Bio:</label>
+            <textarea id="bio" name="bio" rows="4" required>Software Developer, Tech Enthusiast, Game Lover</textarea>
+        </div>
+        <div class="account-form-group">
+            <label for="profileImage">Profile Image:</label>
+            <input type="file" id="profileImage" name="profileImage" />
+        </div>
+        <div class="account-form-group" style="margin-top: 20px;">
+            <button type="submit" class="big-button" id="editButton">Save Changes</button>
+        </div>
+    </form>
+</div>
+<%- include('./partials/footer') %>
