@@ -736,3 +736,32 @@ h2 {
   border-radius: 50%;
   border: 3px solid black;
 }
+
+.profile-details{
+  background-color: #ffc74f;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid black;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+#backToLeaderboardButton {
+  width: auto;
+  font-size: 18px;
+  background-color: #f39af6;
+  text-decoration: none;
+  display: block;
+  max-width: 250px;
+  margin: 20px auto 0 auto;
+  margin-top: 10px;
+}
+
+#backToLeaderboardButton:hover {
+  background-color: #e288e3;
+}
