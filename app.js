@@ -8,13 +8,14 @@ var logger = require('morgan');
 
 var homeRouter = require('./routes/home');
 const accountRouterRouter = require('./routes/accountRouter');
-const accountRouter = require('./routes/account')
+const myAccountRouter = require('./routes/myAccount')
 const leaderboardRouter = require('./routes/leaderboard');
 const gameRouter = require('./routes/game');
 const loginRouter = require('./routes/login');
 const signupRouter = require('./routes/signup');
 const charactersRouter = require('./routes/characters');
 const characterRouter = require('./routes/character');
+const profileRouter = require('./routes/profile');
 
 const db = require('./database/connection'); // ✅ Import the correct database connection file
 
@@ -41,9 +42,10 @@ app.use('/leaderboard', leaderboardRouter);
 app.use('/game', gameRouter);
 app.use('/login', loginRouter);
 app.use('/sign-up', signupRouter);
-app.use('/account', accountRouter);
+app.use('/myAccount', myAccountRouter);
 app.use('/characters', charactersRouter);
 app.use('/character', characterRouter);
+app.use('/profile', profileRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
