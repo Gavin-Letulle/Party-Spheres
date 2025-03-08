@@ -405,3 +405,173 @@ h2 {
 .account-form-group textarea {
   resize: vertical;
 }
+
+.party-circle-group {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -20px;
+}
+
+.party-circle-name-img {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px; 
+  width: 100%; 
+  margin-right: 30px;
+  margin-left: -15px;
+}
+
+.party-circle {
+  flex-direction: column;
+  background-color: #1eecfe;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 2.5px solid black;
+  width: 325px;
+  height: 325px;
+  border-radius: 50%;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 40px;
+  text-align: center;
+  align-items: center;
+  min-width: 325px;
+  cursor: pointer;
+  transition: border;
+}
+
+.party-circle:hover {
+  border: 3px solid white;
+}
+
+.party-circle.selected-circle {
+  border: 3.5px solid yellow !important;
+}
+
+#party-circle-img {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 2px solid black;
+  align-content: center;
+  margin-bottom: 16px;
+}
+
+#party-circle-img img{
+  width: 68px;
+  height: 68px;
+}
+
+.party-circle-label {
+  font-size: 23px;
+  color: white;
+  text-shadow: 
+    -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px  1px 0 black,
+    1px  1px 0 black;
+  margin-bottom: 11.4px;
+}
+
+.party-circle-name {
+  font-size: 17px;
+  color: black;
+  min-width: 140px; 
+  text-align: left; 
+  margin-left: 51px;
+  margin-bottom: 17px;
+}
+
+.party-circle-header {
+  font-size: 41px;
+  color: white;
+  text-shadow: 
+    -1.2px -1.2px 0 black,  
+    1.2px -1.2px 0 black,
+    -1.2px  1.2px 0 black,
+    1.2px  1.2px 0 black;
+  margin-bottom: 11.4px;
+  align-items: center;
+  text-align: center;
+}
+
+.like-list-column{
+  flex-direction: column;
+  display: flex;
+  margin-bottom: 9px;
+}
+
+.like-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 10px;
+  color: white;
+  text-shadow: 
+    -.65px -.65px 0 black,  
+    .65px -.65px 0 black,
+    -.65px  .65px 0 black,
+    .65px  .65px 0 black;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  border: 1px solid black;
+  margin-bottom: 3px;
+  line-height: 35px;
+  margin-left: -3px;
+}
+
+#like-circle-green{
+  background-color: #73ff8f;
+}
+
+#like-circle-red{
+  background-color: #ff7373;
+}
+
+#like-circle-yellow{
+  background-color: #f8ff73
+}
+
+.game-button-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  margin-top: 23px;
+  gap: 40px;
+}
+
+.game-button{
+  padding: 10px 20px;
+  font-size: 20px;
+  color: white;
+  border: 2px solid black;
+  background-color: #1eecfe;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  text-shadow: 
+    -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px  1px 0 black,
+    1px  1px 0 black;
+}
+
+.game-button:hover{
+  background-color: #17c3da;
+}
+
+.game-points{
+  text-align: center;
+  color: black;
+  font-size: 20px;
+}
