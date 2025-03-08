@@ -13,6 +13,13 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = "/leaderboard";
       });
     }
+
+    const charactersButton = document.getElementById("charactersButton");
+    if (charactersButton) {
+        charactersButton.addEventListener('click', function () {
+        window.location.href = "/characters";
+      });
+    }
   
     const accountButton = document.getElementById("accountButton");
     if (accountButton) {
