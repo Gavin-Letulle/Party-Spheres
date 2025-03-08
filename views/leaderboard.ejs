@@ -1,68 +1,98 @@
-<%- include('./partials/header', { currentPage: 'leaderboard'}) %>
-  <div class="content">
-    <div class="leaderboard">
-      <h2>Top 10 Players</h2>
-      <table class="leaderboard-table">
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Name</th>
-            <th>Points</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Player 1</td>
-            <td>1000</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Player 2</td>
-            <td>900</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Player 3</td>
-            <td>800</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Player 4</td>
-            <td>700</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Player 5</td>
-            <td>600</td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>Player 6</td>
-            <td>500</td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td>Player 7</td>
-            <td>450</td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td>Player 8</td>
-            <td>400</td>
-          </tr>
-          <tr>
-            <td>9</td>
-            <td>Player 9</td>
-            <td>350</td>
-          </tr>
-          <tr>
-            <td>10</td>
-            <td>Player 10</td>
-            <td>300</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<%- include('./partials/header', { currentPage: 'leaderboard' }) %>
+<div class="content">
+  <div class="leaderboard">
+    <h2>Top 10 Players</h2>
+    <table class="leaderboard-table">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th style="text-align: left; padding-left: 20px;">Name</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td class="player-info">
+            <img src="/images/ps1.png" alt="PFP" class="leaderboard-profile">
+            Player 1
+          </td>
+          <td>1000</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td class="player-info">
+            <img src="/images/ps2.png" alt="PFP" class="leaderboard-profile">
+            Player 2
+          </td>
+          <td>900</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td class="player-info">
+            <img src="/images/ps1.png" alt="PFP" class="leaderboard-profile">
+            Player 3
+          </td>
+          <td>800</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td class="player-info">
+            <img src="/images/ps2.png" alt="PFP" class="leaderboard-profile">
+            Player 4
+          </td>
+          <td>700</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td class="player-info">
+            <img src="/images/ps1.png" alt="PFP" class="leaderboard-profile">
+            Player 5
+          </td>
+          <td>600</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td class="player-info">
+            <img src="/images/ps2.png" alt="PFP" class="leaderboard-profile">
+            Player 6
+          </td>
+          <td>500</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td class="player-info">
+            <img src="/images/ps1.png" alt="PFP" class="leaderboard-profile">
+            Player 7
+          </td>
+          <td>450</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td class="player-info">
+            <img src="/images/ps2.png" alt="PFP" class="leaderboard-profile">
+            Player 8
+          </td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td class="player-info">
+            <img src="/images/ps1.png" alt="PFP" class="leaderboard-profile">
+            Player 9
+          </td>
+          <td>350</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td class="player-info">
+            <img src="/images/ps2.png" alt="PFP" class="leaderboard-profile">
+            Player 10
+          </td>
+          <td>300</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
 <%- include('./partials/footer') %>
