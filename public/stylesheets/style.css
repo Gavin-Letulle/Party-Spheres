@@ -856,3 +856,17 @@ h2 {
 #backToLeaderboardButton:hover {
   background-color: #e288e3;
 }
+
+@keyframes rainbow {
+  0% { background-color: #ff7373; }  
+  16.6% { background-color: #ffc74f; }
+  33.3% { background-color: #f8ff73; } 
+  50% { background-color: #73ff8f; }  
+  66.6% { background-color: #1eecfe; }
+  83.3% { background-color: #f39af6; }
+  100% { background-color: #ff7373; }
+}
+
+.rainbow-effect {
+  animation: rainbow 1.5s linear infinite;
+}
