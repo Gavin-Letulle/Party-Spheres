@@ -14,6 +14,7 @@ const gameRouter = require('./routes/game');
 const loginRouter = require('./routes/login');
 const signupRouter = require('./routes/signup');
 const charactersRouter = require('./routes/characters');
+const characterRouter = require('./routes/character');
 
 const db = require('./database/connection'); // ✅ Import the correct database connection file
 
@@ -42,6 +43,7 @@ app.use('/login', loginRouter);
 app.use('/sign-up', signupRouter);
 app.use('/account', accountRouter);
 app.use('/characters', charactersRouter);
+app.use('/character', characterRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
