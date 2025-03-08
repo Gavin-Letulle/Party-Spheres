@@ -428,8 +428,17 @@ h2 {
   flex-direction: row;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
   margin-top: -20px;
+  overflow: visible;
+}
+
+@media (max-width: 768px) {
+  .party-circle-group {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .party-circle-name-img {
