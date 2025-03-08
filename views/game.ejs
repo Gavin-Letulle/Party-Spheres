@@ -1,6 +1,12 @@
 <%- include('./partials/header', { currentPage: 'home'}) %>
 <div class = "party-circle-header">Click one group and then make an action:</div>
-<div class = "game-points">Points: 0</div>
+<div class="points-health">
+    <div class="game-points">Points: 0</div>
+    <div class="health-container">
+        <span class="health-label">Happiness</span>
+        <div class="health-bar" id="healthBar" style="--health: 100%;"></div>
+    </div>
+</div>
 <div class = "party-circle-group">
     <div class = "party-circle">
         <div class = "party-circle-label">

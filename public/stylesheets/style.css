@@ -604,6 +604,52 @@ h2 {
   font-size: 20px;
 }
 
+.points-health {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  gap: 70px;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.health-container {
+  position: relative;
+  width: 200px;
+  height: 25px;
+  border: 3px solid black;
+  border-radius: 5px;
+  background-color: #ddd;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+}
+
+.health-bar {
+  width: var(--health, 100%);
+  height: 100%;
+  background-color: #f8ff73;
+  transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.health-label {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: 18px;
+  pointer-events: none;
+  z-index: 2;
+  white-space: nowrap;
+}
+
 .characters-info{
   background-color: #f57979;
     padding-top: 20px;
