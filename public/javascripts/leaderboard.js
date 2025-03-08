@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     leaderboardCells.forEach(cell => {
         cell.addEventListener("click", function () {
-            window.location.href = "/account";
+            window.location.href = "/profile";
         });
     });
 });

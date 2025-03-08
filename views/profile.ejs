@@ -1,0 +1,28 @@
+<%- include('./partials/header', { currentPage: 'leaderboard'}) %>
+<div class="account-details">
+    <h2>Player 1</h2>
+    <div class="account-group">
+        <div class="account-info">
+            <div class="account-item">
+                <strong>Full Name:</strong> <span>Gavin Letulle</span>
+            </div>
+            <div class="account-item">
+                <strong>Account Age:</strong> <span>1 Month</span>
+            </div>
+            <div class="account-item">
+                <strong>Total Points:</strong> <span>20000</span>
+            </div>
+            <div class="account-item">
+                <strong>High Score:</strong> <span>8000</span>
+            </div>
+            <div class="account-item">
+                <strong>Bio:</strong> <span>Way too sweaty at this game...</span>
+            </div>
+        </div>
+        <div id="profileImage">
+            <img src="/images/ps1.png" alt="No image">
+        </div>
+    </div>
+    <a href="/leaderboard" class="big-button" id="editButton">Back To Leaderboard</a>
+</div>
+<%- include('./partials/footer') %>
