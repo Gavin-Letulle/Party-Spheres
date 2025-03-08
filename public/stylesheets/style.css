@@ -351,14 +351,19 @@ h2 {
   text-align: center;
 }
 
+.edit-logout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 70px;
+}
+
 #editButton {
-  width: auto;
   font-size: 18px;
   background-color: #ffc74f;
   text-decoration: none;
   display: block;
   max-width: 250px;
-  margin: 20px auto 0 auto;
   margin-top: 10px;
 }
 
