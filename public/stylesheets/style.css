@@ -205,7 +205,11 @@ a {
 }
 
 .leaderboard-table tr:hover {
-  background-color: #f1f1f1;
+  background-color: #f0bc4b;
+}
+
+.leaderboard-table tr:nth-child(odd):hover {
+  background-color: #ece9e9;
 }
 
 .player-info {
