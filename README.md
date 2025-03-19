@@ -8,6 +8,6 @@
 ### Instructions
 
 #### For Running App
-- run "npm install dotenv" if not already installed
+- run "npm install" to install necessary dependencies
 - run "npm start" in terminal
 - go to http://localhost:3000/
