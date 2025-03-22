@@ -1,19 +1,35 @@
 <%- include('./partials/header', { currentPage: 'characters'}) %>
+
 <div class="character-page-info">
-    <h2>Sal Monella</h2>
+    <h2><%= character.npc_name %></h2>
     <div class="character-group">
         <div class="character-info">
             <div class="character-item">
-                <strong>Likes:</strong> <span>Invites</span>
+                <strong>Likes:</strong>
+                <% if (likes.length > 0) { %>
+                    <span><%= likes.join(', ') %></span>
+                <% } else { %>
+                    <span>None</span>
+                <% } %>
             </div>
             <div class="character-item">
-                <strong>Dislikes:</strong> <span>Compliments</span>
+                <strong>Dislikes:</strong>
+                <% if (dislikes.length > 0) { %>
+                    <span><%= dislikes.join(', ') %></span>
+                <% } else { %>
+                    <span>None</span>
+                <% } %>
             </div>
             <div class="character-item">
-                <strong>Neutral:</strong> <span>Help</span>
+                <strong>Neutral:</strong>
+                <% if (neutral.length > 0) { %>
+                    <span><%= neutral.join(', ') %></span>
+                <% } else { %>
+                    <span>None</span>
+                <% } %>
             </div>
             <div class="character-item">
-                <strong>Lore:</strong> <span>Sal was not loved much as a child.</span>
+                <strong>Lore:</strong> <span><%= character.npc_name%> <%=character.bio %></span>
             </div>
         </div>
         <div id="characterPageImage">
@@ -22,4 +38,5 @@
     </div>
     <a href="/characters" class="big-button" id="backToCharactersButton">Back To Characters</a>
 </div>
+
 <%- include('./partials/footer') %>

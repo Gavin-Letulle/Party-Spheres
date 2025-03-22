@@ -4,16 +4,18 @@
     <h2>Characters</h2>
     <div class="characters-row">
         <% npcs.forEach((npc, index) => { %>
-            <% if (index % 2 === 0) { %> <!-- Open a new column for every two characters -->
+            <% if (index % 2 === 0) { %>
             <div class="characters-column">
             <% } %>
-                <div class="character-name-img">
-                    <div class="character-name"><%= npc.npc_name %></div>
-                    <div id="character-img">
-                        <img src="<%= npc.img_path %>" alt="No image">
+                <a href="/character/<%= npc.npc_id %>" class="character-link">
+                    <div class="character-name-img">
+                        <div class="character-name"><%= npc.npc_name %></div>
+                        <div id="character-img">
+                            <img src="<%= npc.img_path %>" alt="No image">
+                        </div>
                     </div>
-                </div>
-            <% if (index % 2 === 1 || index === npcs.length - 1) { %> <!-- Close the column -->
+                </a>
+            <% if (index % 2 === 1 || index === npcs.length - 1) { %> 
             </div>
             <% } %>
         <% }); %>
