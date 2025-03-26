@@ -1,35 +1,17 @@
 <%- include('./partials/header', { currentPage: 'characters'}) %>
 <div class="characters-info">
-    <h2>Characters</h2>
-    <div class="characters-row">
-        <div class="characters-column">
-            <div class="character-name-img">
-                <div class="character-name">Sal Monella</div>
-                <div id="character-img">
-                    <img src="/images/ps1.png" alt="No image">
-                </div>
-            </div>
-            <div class="character-name-img">
-                <div class="character-name">Mike Hunt</div>
-                <div id="character-img">
-                    <img src="/images/ps1.png" alt="No image">
-                </div>
-            </div>
+  <h2 style="margin-bottom: 40px">Characters</h2>
+  <div class="characters-grid">
+    <% for (let i = 0; i < npcs.length; i++) { %>
+      <a href="/character/<%= npcs[i].npc_id %>">
+        <div class="character-name-img">
+          <div id="character-img">
+            <img src="<%= npcs[i].img_path %>" alt="No image">
+          </div>
+          <div class="character-name"><%= npcs[i].npc_name %></div>
         </div>
-        <div class="characters-column">
-            <div class="character-name-img">
-                <div class="character-name">Hugh Jass</div>
-                <div id="character-img">
-                    <img src="/images/ps1.png" alt="No image">
-                </div>
-            </div>
-            <div class="character-name-img">
-                <div class="character-name">Joe Mama</div>
-                <div id="character-img">
-                    <img src="/images/ps1.png" alt="No image">
-                </div>
-            </div>
-        </div>
-    </div>
+      </a>
+    <% } %>
+  </div>
 </div>
 <%- include('./partials/footer') %>
