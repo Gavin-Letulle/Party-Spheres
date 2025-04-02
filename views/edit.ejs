@@ -1,22 +1,28 @@
 <%- include('./partials/header', { currentPage: 'account'}) %>
+
 <div class="account-form">
     <h2>Edit Account Details</h2>
-    <form action="/myAccount/update" method="POST">
+
+    <% if (error) { %>
+        <div class="error-message"><%= error %></div>
+    <% } %>
+
+    <form action="/edit" method="POST">
         <div class="account-form-group">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" value="john_doe" required />
+            <input type="text" id="username" name="username" value="<%= user.username %>" required />
         </div>
         <div class="account-form-group">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="john_doe@example.com" required />
+            <input type="email" id="email" name="email" value="<%= user.email %>" required />
         </div>
         <div class="account-form-group">
-            <label for="fullName">Full Name:</label>
-            <input type="text" id="fullName" name="fullName" value="John Doe" required />
+            <label for="player_name">Full Name:</label>
+            <input type="text" id="player_name" name="player_name" value="<%= user.player_name %>" />
         </div>
         <div class="account-form-group">
             <label for="bio">Bio:</label>
-            <textarea id="bio" name="bio" rows="4" required>Software Developer, Tech Enthusiast, Game Lover</textarea>
+            <textarea id="bio" name="bio" rows="4"><%= user.bio ? user.bio : '' %></textarea>
         </div>
         <div class="account-form-group">
             <label for="password">New Password:</label>
@@ -27,14 +33,10 @@
             <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm new password" />
         </div>
 
-        <div class="account-form-group">
-            <label for="profileImage">Profile Image:</label>
-            <input type="file" id="profileImage" name="profileImage" />
-        </div>
-
         <div class="account-form-group" style="margin-top: 20px;">
             <button type="submit" class="big-button" id="editButton">Save Changes</button>
         </div>
     </form>
 </div>
+
 <%- include('./partials/footer') %>

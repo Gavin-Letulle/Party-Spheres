@@ -2,7 +2,12 @@
   <div class="content">
     <div class="signup-form">
       <h2>Create an Account</h2>
-      <form action="/myAccount" method="get">
+      
+      <% if (error) { %>
+        <div class="error-message"><%= error %></div>
+      <% } %>
+
+      <form action="/signup" method="post">
         <div class="form-group">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="Enter an email" required>
@@ -17,7 +22,7 @@
         </div>
         <div class="form-group">
           <label for="verify-password">Verify Password</label>
-          <input type="password" id="verify-password" name="verify-password" placeholder="Re-enter your password" required>
+          <input type="password" id="verify-password" name="verifyPassword" placeholder="Re-enter your password" required>
         </div>
         <button type="submit" class="big-button" id="signupButton">Sign Up</button>
       </form>

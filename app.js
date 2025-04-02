@@ -9,22 +9,31 @@ var logger = require('morgan');
 var homeRouter = require('./routes/home');
 const accountRouterRouter = require('./routes/accountRouter');
 const myAccountRouter = require('./routes/myAccount')
+const editRouter = require('./routes/edit')
 const leaderboardRouter = require('./routes/leaderboard');
 const gameRouter = require('./routes/game');
 const loginRouter = require('./routes/login');
+const logoutRouter = require('./routes/logout');
 const signupRouter = require('./routes/signup');
 const charactersRouter = require('./routes/characters');
 const characterRouter = require('./routes/character');
 const profileRouter = require('./routes/profile');
 
-const db = require('./database/connection'); // ✅ Import the correct database connection file
+const db = require('./database/connection'); 
 
-// ✅ Test MySQL Connection
 db.query('SELECT NOW() AS time')
     .then(([rows]) => console.log('✅ Database Test Successful:', rows))
     .catch(err => console.error('❌ Database Query Failed:', err.message));
 
 var app = express();
+
+const session = require('express-session');
+app.use(session({
+    secret: process.env.SESSION_SECRET, 
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false, httpOnly: true, maxAge: 1000 * 60 * 60 } // 1 hour session
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -41,11 +50,13 @@ app.use('/accountRouter', accountRouterRouter);
 app.use('/leaderboard', leaderboardRouter);
 app.use('/game', gameRouter);
 app.use('/login', loginRouter);
-app.use('/sign-up', signupRouter);
+app.use('/signup', signupRouter);
 app.use('/myAccount', myAccountRouter);
 app.use('/characters', charactersRouter);
 app.use('/character', characterRouter);
 app.use('/profile', profileRouter);
+app.use('/logout', logoutRouter);
+app.use('/edit', editRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
