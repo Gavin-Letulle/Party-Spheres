@@ -10,7 +10,7 @@ router.get('/', sessionMiddleware, async (req, res) => {
 
     try {
         const [rows] = await pool.execute(
-            "SELECT username, email, player_name, created_at, total_points, high_score, bio FROM users WHERE user_id = ?", 
+            "SELECT username, email, player_name, created_at, total_points, high_score, img_path, bio FROM users WHERE user_id = ?", 
             [req.session.userId]
         );
         
@@ -23,9 +23,10 @@ router.get('/', sessionMiddleware, async (req, res) => {
                 username: user.username,
                 email: user.email,
                 player_name: user.player_name,
-                account_age: "I'm too stupid for this",
+                account_age: "I'll do this later",
                 total_points: user.total_points,
                 high_score: user.high_score,
+                img_path: user.img_path,
                 bio: user.bio
             }
         });
