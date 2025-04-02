@@ -1,8 +1,22 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const pool = require('../database/connection');
+const router = express.Router();
 
-router.get('/', function(req, res) {
-  res.render('leaderboard', { title: 'Leaderboard' });
+router.get('/', async (req, res) => {
+    try {
+        const [users] = await pool.execute(
+            "SELECT username, high_score, img_path FROM users ORDER BY high_score DESC LIMIT 10"
+        );
+
+        res.render('leaderboard', { 
+            title: 'Leaderboard', 
+            users
+        });
+
+    } catch (error) {
+        console.error("Error fetching leaderboard data:", error);
+        res.status(500).send('Error loading leaderboard.');
+    }
 });
 
 module.exports = router;
