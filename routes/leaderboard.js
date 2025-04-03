@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     try {
         const [users] = await pool.execute(
-            "SELECT username, high_score, img_path FROM users ORDER BY high_score DESC LIMIT 10"
+            "SELECT user_id, username, high_score, img_path FROM users ORDER BY high_score DESC LIMIT 10"
         );
 
         res.render('leaderboard', { 

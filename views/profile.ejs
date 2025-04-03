@@ -1,28 +1,30 @@
 <%- include('./partials/header', { currentPage: 'leaderboard'}) %>
+
 <div class="profile-details">
-    <h2>Player 1</h2>
+    <h2><%= user.username %></h2>
     <div class="account-group">
         <div class="account-info">
             <div class="account-item">
-                <strong>Full Name:</strong> <span>Gavin Letulle</span>
+                <strong>Full Name:</strong> <span><%= user.player_name %></span>
             </div>
             <div class="account-item">
-                <strong>Account Age:</strong> <span>1 Month</span>
+                <strong>Account Age:</strong> <span><%= account_age %></span>
             </div>
             <div class="account-item">
-                <strong>Total Points:</strong> <span>20000</span>
+                <strong>Total Points:</strong> <span><%= user.total_points %></span>
             </div>
             <div class="account-item">
-                <strong>High Score:</strong> <span>8000</span>
+                <strong>High Score:</strong> <span><%= user.high_score %></span>
             </div>
             <div class="account-item">
-                <strong>Bio:</strong> <span>Way too sweaty at this game...</span>
+                <strong>Bio:</strong> <span><%= user.bio ? user.bio : "No bio available" %></span>
             </div>
         </div>
         <div id="profileImage">
-            <img src="/images/ps1.png" alt="No image">
+            <img src="<%= user.img_path ? user.img_path : '/images/ps1.png' %>" alt="No image">
         </div>
     </div>
     <a href="/leaderboard" class="big-button" id="backToLeaderboardButton">Back To Leaderboard</a>
 </div>
+
 <%- include('./partials/footer') %>
