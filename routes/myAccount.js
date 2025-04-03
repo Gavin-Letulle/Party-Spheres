@@ -18,12 +18,18 @@ router.get('/', sessionMiddleware, async (req, res) => {
 
         const user = rows[0];
 
+        const createdAt = new Date(user.created_at);
+        console.log(createdAt);
+        const today = new Date();
+        console.log(today);
+        const account_age = Math.floor((today - createdAt) / (1000 * 60 * 60 * 24));
+
         res.render('myAccount', { 
             user: {
                 username: user.username,
                 email: user.email,
                 player_name: user.player_name,
-                account_age: "I'll do this later",
+                account_age: account_age,
                 total_points: user.total_points,
                 high_score: user.high_score,
                 img_path: user.img_path,

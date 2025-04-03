@@ -5,10 +5,12 @@
     <div class="account-group">
         <div class="account-info">
             <div class="account-item">
-                <strong>Full Name:</strong> <span><%= user.player_name %></span>
+                <% if (user.player_name) { %>
+                    <strong>Full Name:</strong> <span><%= user.player_name %></span>
+                <% } %>
             </div>
             <div class="account-item">
-                <strong>Account Age:</strong> <span><%= account_age %></span>
+                <strong>Account Age:</strong> <span><%= account_age %> <%= account_age === 1 ? 'day' : 'days' %> old</span>
             </div>
             <div class="account-item">
                 <strong>Total Points:</strong> <span><%= user.total_points %></span>
@@ -17,7 +19,9 @@
                 <strong>High Score:</strong> <span><%= user.high_score %></span>
             </div>
             <div class="account-item">
-                <strong>Bio:</strong> <span><%= user.bio ? user.bio : "No bio available" %></span>
+                <% if (user.bio) { %>
+                    <strong>Bio:</strong> <span><%= user.bio %></span>
+                <% } %>
             </div>
         </div>
         <div id="profileImage">

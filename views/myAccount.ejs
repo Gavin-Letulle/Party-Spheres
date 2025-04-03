@@ -16,7 +16,7 @@
                 <% } %>
             </div> 
             <div class="account-item">
-                <strong>Account Age:</strong> <span><%= user.account_age %></span>
+                <strong>Account Age:</strong> <span><%= user.account_age %> <%= user.account_age === 1 ? 'day' : 'days' %> old</span>
             </div>
             <div class="account-item">
                 <strong>Total Points:</strong> <span><%= user.total_points %></span>

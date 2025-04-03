@@ -19,13 +19,13 @@ router.get('/:user_id', async (req, res) => {
 
         const user = rows[0];
 
-        // Calculate account age
         const createdAt = new Date(user.created_at);
-        const now = new Date();
-        const diffMonths = (now.getFullYear() - createdAt.getFullYear()) * 12 + (now.getMonth() - createdAt.getMonth());
-        const account_age = diffMonths > 1 ? `${diffMonths} Months` : `${diffMonths} Month`;
+        console.log(createdAt);
+        const today = new Date();
+        console.log(today);
+        const account_age = Math.floor((today - createdAt) / (1000 * 60 * 60 * 24));
 
-        res.render('profile', { user, account_age });
+        res.render('profile', { user, account_age});
     } catch (err) {
         console.error('Error fetching user profile:', err);
         res.status(500).send('Server error');
@@ -33,4 +33,3 @@ router.get('/:user_id', async (req, res) => {
 });
 
 module.exports = router;
-
