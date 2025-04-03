@@ -24,6 +24,21 @@
             <label for="bio">Bio:</label>
             <textarea id="bio" name="bio" rows="4"><%= user.bio ? user.bio : '' %></textarea>
         </div>
+
+        <div class="account-form-group">
+            <label for="profileImage">Profile Image:</label>
+            <select id="profileImage" name="img_path">
+                <% images.forEach(image => { %>
+                    <option value="/images/<%= image %>" <%= user.img_path === ('/images/' + image) ? 'selected' : '' %>>
+                        <%= image %>
+                    </option>
+                <% }); %>
+            </select>
+            <div class="profile-preview">
+                <img id="profilePreview" src="<%= user.img_path %>" alt="Profile Image">
+            </div>
+        </div>
+
         <div class="account-form-group">
             <label for="password">New Password:</label>
             <input type="password" id="password" name="password" placeholder="Enter new password" />
@@ -37,6 +52,22 @@
             <button type="submit" class="big-button" id="editButton">Save Changes</button>
         </div>
     </form>
+
+    <form id="deleteForm" action="/edit" method="POST" style="margin-top: 20px;">
+        <input type="hidden" name="deleteAccount" value="true">
+        <button type="button" class="big-button" id="deleteButton">Delete Account</button>
+    </form>
 </div>
 
+<script>
+    document.getElementById('deleteButton').addEventListener('click', function(event) {
+        event.preventDefault();
+
+        if (confirm('Are you sure you want to delete your account? This action is irreversible.')) {
+            document.getElementById('deleteForm').submit();
+        }
+    });
+</script>
+
 <%- include('./partials/footer') %>
+

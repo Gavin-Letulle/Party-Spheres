@@ -4,21 +4,45 @@ const pool = require('../database/connection');
 const bcrypt = require('bcrypt');
 
 router.get('/', function(req, res) {
-  res.render('login', { title: 'Login' });
+  res.render('login', { title: 'Login', error: null });
 });
 
 router.post('/', async (req, res) => {
     const { username, password } = req.body;
-    if (!username || !password) return res.status(400).send('All fields required.');
+    if (!username || !password) {
+        return res.render('login', { title: 'Login', error: 'All fields are required.' });
+    }
 
     try {
-        const [rows] = await pool.execute("SELECT * FROM users WHERE username = ?", [username]);
-        if (rows.length === 0) return res.status(401).send('Invalid credentials.');
+        const [rows] = await pool.execute(
+            "SELECT * FROM users WHERE username = ?", [username]
+        );
 
-        const user = rows[0];  
+        if (rows.length === 0) {
+            return res.render('login', { 
+                title: 'Login', 
+                error: 'Invalid credentials.' 
+            });
+        }
+
+        const user = rows[0];
+
+        // Check if account is deleted
+        if (user.deleted_at !== null) {
+            return res.render('login', { 
+                title: 'Login', 
+                error: 'Your account has been deleted. Please contact support if you need assistance.' 
+            });
+        }
+
+        // Check if the password matches
         const isMatch = await bcrypt.compare(password, user.password_hash);  
-
-        if (!isMatch) return res.status(401).send('Invalid credentials.');
+        if (!isMatch) {
+            return res.render('login', { 
+                title: 'Login', 
+                error: 'Invalid credentials.' 
+            });
+        }
 
         req.session.userId = user.user_id;
         res.redirect('/myAccount');
@@ -29,3 +53,4 @@ router.post('/', async (req, res) => {
 });
 
 module.exports = router;
+

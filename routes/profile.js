@@ -20,10 +20,9 @@ router.get('/:user_id', async (req, res) => {
         const user = rows[0];
 
         const createdAt = new Date(user.created_at);
-        console.log(createdAt);
         const today = new Date();
-        console.log(today);
-        const account_age = Math.floor((today - createdAt) / (1000 * 60 * 60 * 24));
+        let account_age = Math.floor((today - createdAt) / (1000 * 60 * 60 * 24));
+        account_age = account_age < 0 ? 0 : account_age;
 
         res.render('profile', { user, account_age});
     } catch (err) {
