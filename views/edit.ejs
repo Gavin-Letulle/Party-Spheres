@@ -67,6 +67,13 @@
             document.getElementById('deleteForm').submit();
         }
     });
+    const profileImageSelect = document.getElementById('profileImage');
+    const profilePreview = document.getElementById('profilePreview');
+
+    profileImageSelect.addEventListener('change', function () {
+        const selectedImage = this.value;
+        profilePreview.src = selectedImage;
+    });
 </script>
 
 <%- include('./partials/footer') %>

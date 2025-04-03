@@ -371,6 +371,19 @@ h2 {
   margin-top: 10px;
 }
 
+#deleteButton {
+  font-size: 18px;
+  background-color: #f57979;
+  text-decoration: none;
+  display: block;
+  max-width: 250px;
+  margin-top: 10px;
+}
+
+#deleteButton:hover {
+  background-color: #cf6969;
+}
+
 #editButton:hover {
   background-color: #e6b244;
 }
