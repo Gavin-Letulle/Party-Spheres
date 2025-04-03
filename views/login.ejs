@@ -1,22 +1,28 @@
 <%- include('./partials/header', { currentPage: 'account'}) %>
+
 <div class="content">
     <div class="signup-form">
         <h2>Login</h2>
-        <form action="/myAccount" method="get">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required>
-        </div>
-        <button type="submit" class="big-button" id="signupButton">Go</button>
+
+        <% if (error) { %>
+            <div class="error-message"><%= error %></div>
+        <% } %>
+
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="big-button" id="signupButton">Go</button>
         </form>
     </div>
     <div class="login-link">
-        <p>Don't have an account? <a href="/sign-up">Sign up here</a></p>
-    </div>
+        <p>Don't have an account? <a href="/signup">Sign up here</a></p>
     </div>
 </div>
+
 <%- include('./partials/footer') %>

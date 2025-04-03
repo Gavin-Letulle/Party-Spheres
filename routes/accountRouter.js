@@ -1,8 +1,11 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-router.get('/', function(req, res) {
-  res.redirect('/login');
+router.get('/', (req, res) => {
+    if (!req.session.userId) {
+        return res.redirect('/login'); 
+    }
+    res.redirect('/myAccount'); 
 });
 
 module.exports = router;

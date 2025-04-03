@@ -7,7 +7,7 @@ router.get('/:npc_id', async (req, res) => {
 
     try {
         const [rows] = await pool.query(
-            `SELECT npc_name, bio, likes_compliments, likes_help, likes_invites 
+            `SELECT npc_name, bio, likes_compliments, likes_help, likes_invites, img_path 
              FROM npcs 
              WHERE npc_id = ?`, 
             [npc_id]
