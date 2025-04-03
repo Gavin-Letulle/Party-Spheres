@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
         if (user.deleted_at !== null) {
             return res.render('login', { 
                 title: 'Login', 
-                error: 'Your account has been deleted. Please contact support if you need assistance.' 
+                error: 'This account has been deleted. Please contact an admin for account recovery.' 
             });
         }
 
