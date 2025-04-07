@@ -858,6 +858,11 @@ h2 {
   border: 3px solid black;
 }
 
+#profilePreview {
+  width: 150px;
+  height: 150px;
+}
+
 .profile-details{
   background-color: #ffc74f;
   padding: 20px;
