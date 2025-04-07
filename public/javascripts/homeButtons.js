@@ -27,4 +27,11 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = "/accountRouter";
       });
     }
+
+    const playersButton = document.getElementById("playersButton");
+    if (playersButton) {
+        playersButton.addEventListener('click', function () {
+        window.location.href = "/players";
+      });
+    }
   });
