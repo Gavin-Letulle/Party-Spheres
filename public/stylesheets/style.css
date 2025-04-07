@@ -127,11 +127,19 @@ a {
 }
 
 #charactersButton:hover {
-  background-color: #cf6969;
+  background-color: #d56b6b;
 }
 
 #accountButton:hover {
-  background-color: #e288e3;
+  background-color: #df86e0;
+}
+
+#playersButton {
+  background-color: #f5e36f;
+}
+
+#playersButton:hover {
+  background-color: rgb(226, 205, 68);
 }
 
 #signupButton {
@@ -228,6 +236,13 @@ a {
   border-radius: 50%;
   border: 2px solid black;
   flex-shrink: 0;
+}
+
+.leaderboard-players {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 70px;
 }
 
 .player-info span {
@@ -884,7 +899,6 @@ h2 {
   text-decoration: none;
   display: block;
   max-width: 250px;
-  margin: 20px auto 0 auto;
   margin-top: 10px;
 }
 
@@ -910,4 +924,120 @@ h2 {
     color: red;
     font-weight: bold;
     margin-bottom: 10px;
+}
+
+.player-search {
+  background-color: #f5e36f;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid black;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.player-search-bar {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.player-search-bar input[type="text"] {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+  font-family: inherit;
+  border-radius: 5px;
+  border: 2px solid black;
+  outline: none;
+  box-shadow: none;
+}
+
+.player-search-bar button {
+  font-size: 20px;
+  background-color: #ffc74f;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  padding: 10px 20px;
+  color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  text-align: center;
+  font-family: "DynaPuff", serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  text-shadow: 
+    -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px  1px 0 black,
+    1px  1px 0 black;
+  margin-left: 5px;
+}
+
+.player-search-bar button:hover {
+  background-color: #e6b244;
+}
+
+.player-search-bar input::placeholder {
+  font-family: inherit;
+  font-size: inherit;
+  color: #666;
+}
+
+.players-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.player-listing {
+  display: flex;
+  flex-direction: row;
+  background-color: #f5e36f;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid black;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.player-listing:hover {
+  background-color: rgb(232, 216, 111)
+}
+
+.player-name {
+  font-size: 20px;
+  color: white;
+  text-shadow:
+    -1px -1px 0 black,  
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+  margin: 0;
+}
+
+#player-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+#player-image img {
+  width: 80px;
+  height: 80px;
 }
