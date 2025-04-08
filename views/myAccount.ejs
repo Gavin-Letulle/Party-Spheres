@@ -37,6 +37,9 @@
     </div>
     <div class = "edit-logout">
         <a href="/edit" class="big-button" id="editButton">Edit Account</a>
+        <% if (user.admin === 'true') { %>
+            <a href="/admin" class="big-button" id="editButton">Admin Panel</a>
+        <% } %>
         <form action="/logout" method="POST" style="display:inline;">
             <button type="submit" class="big-button" id="editButton">Logout</button>
         </form>
