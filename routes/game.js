@@ -43,6 +43,28 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.post('/action', async (req, res) => {
+  try {
+    const { action, circle } = req.body;
+    for (npc in circle) {
+      if (action == "compliment-button") {
+        if (npc.likes_compliments) {
 
+        }
+      } else if (action == "invite-button") {
+        if (npc.likes_invites) {
+
+        }
+      } else {
+        if (npc.likes_help) {
+          
+        }
+      }
+    }
+  } catch(error) {
+    console.error("Error completing action:", error);
+    res.status(500).send('Error processing game action.');
+  }
+});
 
 module.exports = router;
