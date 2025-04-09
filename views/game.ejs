@@ -1,150 +1,162 @@
 <%- include('./partials/header', { currentPage: 'home'}) %>
 <div class = "party-circle-header">Click one group and then make an action:</div>
 <div class="points-health">
-    <div class="game-points">Points: 0</div>
+    <div class="game-points">Points: <%= user.total_points %></div>
     <div class="health-container">
         <span class="health-label">Happiness</span>
         <div class="health-bar" id="healthBar" style="--health: 100%;"></div>
     </div>
-    <div class="game-points">High Score: 0</div>
+    <div class="game-points">High Score: <%= user.high_score %></div>
 </div>
 <div class = "party-circle-group">
-    <div class = "party-circle">
+    <div class = "party-circle" id="circle1" data-circle="<%= JSON.stringify(circle1)%> ">
         <div class = "party-circle-label">
             Sphere 1
         </div>
-        <div class = "party-circle-name-img">
-            <div class = "party-circle-name">
-                Ella Vator
+        <% for(let i = 0; i < circle1.length; i++) { %>
+            <%
+            let npc = circle1[i];
+            let cClass, iClass, hClass;
+            if (npc.likes_compliments == 'true') {
+                cClass = "like-circle-green";
+            } else if (npc.likes_compliments == 'false') {
+                cClass = "like-circle-red";
+            } else {
+                cClass = "like-circle-yellow";
+            }
+
+            if (npc.likes_help == 'true') {
+                hClass = "like-circle-green";
+            } else if (npc.likes_help == 'false') {
+                hClass = "like-circle-red";
+            } else {
+                hClass = "like-circle-yellow";
+            }
+
+            if (npc.likes_invites == 'true') {
+                iClass = "like-circle-green";
+            } else if (npc.likes_invite == 'false') {
+                iClass = "like-circle-red";
+            } else {
+                iClass = "like-circle-yellow";
+            }
+
+            %>
+            <div class = "party-circle-name-img">
+                <div class = "party-circle-name">
+                    <%= npc.npc_name %>
+                </div>
+                <div id = "party-circle-img">
+                    <img src="<%= npc.img_path %>" alt="No image">
+                </div>
+                <div class = "like-list-column">
+                    <div class = "like-circle" id = "<%= cClass %>">C</div>
+                    <div class = "like-circle" id = "<%= iClass %>">I</div>
+                    <div class = "like-circle" id = "<%= hClass %>">H</div>
+                </div>
             </div>
-            <div id = "party-circle-img">
-                <img src="/images/ps1.png" alt="No image">
-            </div>
-            <div class = "like-list-column">
-                <div class = "like-circle" id = "like-circle-red">C</div>
-                <div class = "like-circle" id = "like-circle-green">I</div>
-                <div class = "like-circle" id = "like-circle-yellow">H</div>
-            </div>
-        </div>
-        <div class = "party-circle-name-img">
-            <div class = "party-circle-name">
-                Mike Hunt
-            </div>
-            <div id = "party-circle-img">
-                <img src="/images/ps1.png" alt="No image">
-            </div>
-            <div class = "like-list-column">
-                <div class = "like-circle" id = "like-circle-green">C</div>
-                <div class = "like-circle" id = "like-circle-green">I</div>
-                <div class = "like-circle" id = "like-circle-red">H</div>
-            </div>
-        </div>
-        <div class = "party-circle-name-img">
-            <div class = "party-circle-name">
-                Justin Time
-            </div>
-            <div id = "party-circle-img">
-                <img src="/images/ps1.png" alt="No image">
-            </div>
-            <div class = "like-list-column">
-                <div class = "like-circle" id = "like-circle-red">C</div>
-                <div class = "like-circle" id = "like-circle-yellow">I</div>
-                <div class = "like-circle" id = "like-circle-red">H</div>
-            </div>
-        </div>
+        <% } %>
     </div>
-    <div class = "party-circle">
+    <div class = "party-circle" id="circle2" data-circle="<%= JSON.stringify(circle2)%> ">
         <div class = "party-circle-label">
             Sphere 2
         </div>
-        <div class = "party-circle-name-img">
-            <div class = "party-circle-name">
-                Joe Mama
+        <% for(let i = 0; i < circle2.length; i++) { %>
+            <%
+            let npc = circle2[i];
+            let cClass, iClass, hClass;
+            if (npc.likes_compliments == 'true') {
+                cClass = "like-circle-green";
+            } else if (npc.likes_compliments == 'false') {
+                cClass = "like-circle-red";
+            } else {
+                cClass = "like-circle-yellow";
+            }
+
+            if (npc.likes_help == 'true') {
+                hClass = "like-circle-green";
+            } else if (npc.likes_help == 'false') {
+                hClass = "like-circle-red";
+            } else {
+                hClass = "like-circle-yellow";
+            }
+
+            if (npc.likes_invites == 'true') {
+                iClass = "like-circle-green";
+            } else if (npc.likes_invite == 'false') {
+                iClass = "like-circle-red";
+            } else {
+                iClass = "like-circle-yellow";
+            }
+
+            %>
+            <div class = "party-circle-name-img">
+                <div class = "party-circle-name">
+                    <%= npc.npc_name %>
+                </div>
+                <div id = "party-circle-img">
+                    <img src="<%= npc.img_path %>" alt="No image">
+                </div>
+                <div class = "like-list-column">
+                    <div class = "like-circle" id = "<%= cClass %>">C</div>
+                    <div class = "like-circle" id = "<%= iClass %>">I</div>
+                    <div class = "like-circle" id = "<%= hClass %>">H</div>
+                </div>
             </div>
-            <div id = "party-circle-img">
-                <img src="/images/ps1.png" alt="No image">
-            </div>
-            <div class = "like-list-column">
-                <div class = "like-circle" id = "like-circle-green">C</div>
-                <div class = "like-circle" id = "like-circle-red">I</div>
-                <div class = "like-circle" id = "like-circle-yellow">H</div>
-            </div>
-        </div>
-        <div class = "party-circle-name-img">
-            <div class = "party-circle-name">
-                Sal Monella
-            </div>
-            <div id = "party-circle-img">
-                <img src="/images/ps1.png" alt="No image">
-            </div>
-            <div class = "like-list-column">
-                <div class = "like-circle" id = "like-circle-yellow">C</div>
-                <div class = "like-circle" id = "like-circle-yellow">I</div>
-                <div class = "like-circle" id = "like-circle-green">H</div>
-            </div>
-        </div>
-        <div class = "party-circle-name-img">
-            <div class = "party-circle-name">
-                Warren Peace
-            </div>
-            <div id = "party-circle-img">
-                <img src="/images/ps1.png" alt="No image">
-            </div>
-            <div class = "like-list-column">
-                <div class = "like-circle" id = "like-circle-red">C</div>
-                <div class = "like-circle" id = "like-circle-green">I</div>
-                <div class = "like-circle" id = "like-circle-red">H</div>
-            </div>
-        </div>
+        <% } %>
     </div>
-    <div class = "party-circle">
+    <div class = "party-circle" id="circle3" data-circle="<%= JSON.stringify(circle3)%> ">
         <div class = "party-circle-label">
             Sphere 3
         </div>
-        <div class = "party-circle-name-img">
-            <div class = "party-circle-name">
-                Hugh Jass
+        <% for(let i = 0; i < circle3.length; i++) { %>
+            <%
+            let npc = circle3[i];
+            let cClass, iClass, hClass;
+            if (npc.likes_compliments == 'true') {
+                cClass = "like-circle-green";
+            } else if (npc.likes_compliments == 'false') {
+                cClass = "like-circle-red";
+            } else {
+                cClass = "like-circle-yellow";
+            }
+
+            if (npc.likes_help == 'true') {
+                hClass = "like-circle-green";
+            } else if (npc.likes_help == 'false') {
+                hClass = "like-circle-red";
+            } else {
+                hClass = "like-circle-yellow";
+            }
+
+            if (npc.likes_invites == 'true') {
+                iClass = "like-circle-green";
+            } else if (npc.likes_invite == 'false') {
+                iClass = "like-circle-red";
+            } else {
+                iClass = "like-circle-yellow";
+            }
+
+            %>
+            <div class = "party-circle-name-img">
+                <div class = "party-circle-name">
+                    <%= npc.npc_name %>
+                </div>
+                <div id = "party-circle-img">
+                    <img src="<%= npc.img_path %>" alt="No image">
+                </div>
+                <div class = "like-list-column">
+                    <div class = "like-circle" id = "<%= cClass %>">C</div>
+                    <div class = "like-circle" id = "<%= iClass %>">I</div>
+                    <div class = "like-circle" id = "<%= hClass %>">H</div>
+                </div>
             </div>
-            <div id = "party-circle-img">
-                <img src="/images/ps1.png" alt="No image">
-            </div>
-            <div class = "like-list-column">
-                <div class = "like-circle" id = "like-circle-green">C</div>
-                <div class = "like-circle" id = "like-circle-green">I</div>
-                <div class = "like-circle" id = "like-circle-green">H</div>
-            </div>
-        </div>
-        <div class = "party-circle-name-img">
-            <div class = "party-circle-name">
-                Sue Flay
-            </div>
-            <div id = "party-circle-img">
-                <img src="/images/ps1.png" alt="No image">
-            </div>
-            <div class = "like-list-column">
-                <div class = "like-circle" id = "like-circle-yellow">C</div>
-                <div class = "like-circle" id = "like-circle-green">I</div>
-                <div class = "like-circle" id = "like-circle-yellow">H</div>
-            </div>
-        </div>
-        <div class = "party-circle-name-img">
-            <div class = "party-circle-name">
-                Ben dover
-            </div>
-            <div id = "party-circle-img">
-                <img src="/images/ps1.png" alt="No image">
-            </div>
-            <div class = "like-list-column">
-                <div class = "like-circle" id = "like-circle-red">C</div>
-                <div class = "like-circle" id = "like-circle-red">I</div>
-                <div class = "like-circle" id = "like-circle-red">H</div>
-            </div>
-        </div>
+        <% } %>
     </div>
 </div>
 <div class="game-button-row">
-    <div class="game-button">Give Compliments</div>
-    <div class="game-button">Invite to Event</div>
-    <div class="game-button">Offer Help</div>
+    <div class="game-button" id="compliment-button">Give Compliments</div>
+    <div class="game-button" id="invite-button">Invite to Event</div>
+    <div class="game-button" id="help-button">Offer Help</div>
 </div>
 <%- include('./partials/footer') %>

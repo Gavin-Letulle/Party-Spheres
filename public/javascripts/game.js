@@ -4,13 +4,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     partyCircles.forEach(circle => {
         circle.addEventListener("click", function () {
+            const isSelected = circle.classList.contains("selected-circle");
             partyCircles.forEach(c => c.classList.remove("selected-circle"));
-            this.classList.add("selected-circle");
+            if (!isSelected) {
+                this.classList.add("selected-circle");
+            }
         });
     });
 
     gameButtons.forEach(button => {
         button.addEventListener("click", function () {
+            const selectedCircle = document.querySelector(".selected-circle");
+            const circle = selectedCircle.getAttribute("data-circle");
+            const action = button.id;
+            console.log(circle);
             partyCircles.forEach(c => c.classList.remove("selected-circle"));
         });
     });
