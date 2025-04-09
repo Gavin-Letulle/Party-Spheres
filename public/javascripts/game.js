@@ -13,11 +13,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     gameButtons.forEach(button => {
-        button.addEventListener("click", function () {
+        button.addEventListener("click", async () => {
             const selectedCircle = document.querySelector(".selected-circle");
-            const circle = selectedCircle.getAttribute("data-circle");
+            const circle = JSON.parse(selectedCircle.getAttribute("data-circle"));
             const action = button.id;
-            console.log(circle);
+            console.log(circle[0]);
+
+            const response = await fetch("/game/action", {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({circle, action})
+            });
+            const { currentPoints, highScore, circle1, circle2, circle3 } = await response.json();
+            
+
             partyCircles.forEach(c => c.classList.remove("selected-circle"));
         });
     });

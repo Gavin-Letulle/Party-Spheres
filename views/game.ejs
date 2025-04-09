@@ -1,12 +1,12 @@
 <%- include('./partials/header', { currentPage: 'home'}) %>
 <div class = "party-circle-header">Click one group and then make an action:</div>
 <div class="points-health">
-    <div class="game-points">Points: <%= user.total_points %></div>
+    <div class="game-points" id="current-points">Points: <%= user.total_points %></div>
     <div class="health-container">
         <span class="health-label">Happiness</span>
         <div class="health-bar" id="healthBar" style="--health: 100%;"></div>
     </div>
-    <div class="game-points">High Score: <%= user.high_score %></div>
+    <div class="game-points" id=high-score"">High Score: <%= user.high_score %></div>
 </div>
 <div class = "party-circle-group">
     <div class = "party-circle" id="circle1" data-circle="<%= JSON.stringify(circle1)%> ">

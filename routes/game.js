@@ -9,6 +9,18 @@ function shuffleArray(array){
   }
 }
 
+// Returns 9 random NPCs
+async function randomNpcs() {
+  const [npcs] = await pool.query(
+    "SELECT * FROM npcs",
+  );
+  shuffleArray(npcs);
+  let circle1 = npcs.slice(0, 3);
+  let circle2 = npcs.slice(3, 6);
+  let circle3 = npcs.slice(6, 9);
+  return [circle1, circle2, circle3];
+}
+
 router.get('/', async (req, res) => {
   try {
     if (!req.session.userId) {
@@ -20,13 +32,7 @@ router.get('/', async (req, res) => {
       );
       const user = users[0];
 
-      const [npcs] = await pool.query(
-        "SELECT * FROM npcs",
-      );
-      shuffleArray(npcs);
-      let circle1 = npcs.slice(0, 3);
-      let circle2 = npcs.slice(3, 6);
-      let circle3 = npcs.slice(6, 9);
+      const [circle1, circle2, circle3] = await randomNpcs();
 
       res.render(
         'game', { 
@@ -46,21 +52,33 @@ router.get('/', async (req, res) => {
 router.post('/action', async (req, res) => {
   try {
     const { action, circle } = req.body;
-    for (npc in circle) {
+
+    for (npc of circle) {
+      console.log(npc);
       if (action == "compliment-button") {
         if (npc.likes_compliments) {
-
+          console.log("likes compliments");
         }
       } else if (action == "invite-button") {
         if (npc.likes_invites) {
-
+          console.log("likes invites");
         }
       } else {
         if (npc.likes_help) {
-          
+          console.log("likes help");
         }
       }
     }
+
+    const [circle1, circle2, circle3] = await randomNpcs();
+    const response = {
+      currentPoints: 3,
+      highScore: 2,
+      circle1,
+      circle2,
+      circle3
+    };
+    res.status(200).send(JSON.stringify(response));
   } catch(error) {
     console.error("Error completing action:", error);
     res.status(500).send('Error processing game action.');
