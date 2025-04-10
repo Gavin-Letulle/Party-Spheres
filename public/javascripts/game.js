@@ -26,9 +26,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 body: JSON.stringify({circle, action})
             });
-            const { currentPoints, highScore, circle1, circle2, circle3 } = await response.json();
-            
+            const { currentPoints, highScore, happiness, circle1, circle2, circle3 } = await response.json();
 
+            updateHealthBar(happiness);
+            document.querySelector("#current-points").innerText = `Points: ${currentPoints}`;
+            document.querySelector("#high-score").innerText = `High Score: ${highScore}`;
+            
             partyCircles.forEach(c => c.classList.remove("selected-circle"));
         });
     });

@@ -24,7 +24,8 @@ async function randomNpcs() {
 router.get('/', async (req, res) => {
   try {
     if (!req.session.userId) {
-      return res.status(401).send('Unauthorized: Please log in.');
+      return res.redirect('/login'); 
+    //  return res.status(401).send('Unauthorized: Please log in.');
     } else {
       const [users] = await pool.execute(
           "SELECT total_points, high_score FROM users WHERE user_id = ?", 
@@ -34,10 +35,15 @@ router.get('/', async (req, res) => {
 
       const [circle1, circle2, circle3] = await randomNpcs();
 
+      req.session.points = 0;
+      req.session.happiness = 50;
+
       res.render(
         'game', { 
           title: 'Game page',
           user,
+          points: req.session.points,
+          happiness: req.session.happiness,
           circle1,
           circle2,
           circle3
@@ -51,36 +57,67 @@ router.get('/', async (req, res) => {
 
 router.post('/action', async (req, res) => {
   try {
+    const [users] = await pool.execute(
+      "SELECT total_points, high_score FROM users WHERE user_id = ?", 
+      [req.session.userId]
+    );
+    const user = users[0];
+
     const { action, circle } = req.body;
+
+    let pointChange = 0;
 
     for (npc of circle) {
       console.log(npc);
       if (action == "compliment-button") {
-        if (npc.likes_compliments) {
-          console.log("likes compliments");
+        if (npc.likes_compliments == 'true') {
+          pointChange += 5;
+        } else if (npc.likes_compliments == 'false') {
+          pointChange -= 5;
         }
       } else if (action == "invite-button") {
-        if (npc.likes_invites) {
-          console.log("likes invites");
+        if (npc.likes_invites == 'true') {
+          pointChange += 5;
+        } else if (npc.likes_invites == 'false') {
+          pointChange -= 5;
         }
       } else {
-        if (npc.likes_help) {
-          console.log("likes help");
+        if (npc.likes_help == 'true') {
+          pointChange += 5;
+        } else if (npc.likes_help == 'false') {
+          pointChange -= 5;
         }
       }
     }
 
+    if (req.session.points + pointChange < 0) {
+      req.session.points = 0;
+    } else {
+      req.session.points += pointChange;
+    }
+
+    if (req.session.happiness + pointChange > 100) {
+      req.session.happiness = 100;
+    } else if (req.session.happiness + pointChange < 0) {
+      req.session.happiness = 0;
+    } else {
+      req.session.happiness += pointChange;
+    }
+
+    console.log(req.session.points);
+
     const [circle1, circle2, circle3] = await randomNpcs();
     const response = {
-      currentPoints: 3,
+      currentPoints: req.session.points,
       highScore: 2,
+      happiness: req.session.happiness,
       circle1,
       circle2,
       circle3
     };
     res.status(200).send(JSON.stringify(response));
   } catch(error) {
-    console.error("Error completing action:", error);
+    console.error("Error completing game action:", error);
     res.status(500).send('Error processing game action.');
   }
 });
