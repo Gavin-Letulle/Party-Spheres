@@ -18,6 +18,7 @@ const signupRouter = require('./routes/signup');
 const charactersRouter = require('./routes/characters');
 const characterRouter = require('./routes/character');
 const profileRouter = require('./routes/profile');
+const playersRouter = require('./routes/players');
 
 const db = require('./database/connection'); 
 
@@ -57,6 +58,7 @@ app.use('/character', characterRouter);
 app.use('/profile', profileRouter);
 app.use('/logout', logoutRouter);
 app.use('/edit', editRouter);
+app.use('/players', playersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
