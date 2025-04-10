@@ -7,11 +7,8 @@
         <input type="text" id="adminSearch" placeholder="Search players..." />
         <button id="adminSearchBtn">Search</button>
     </div>
-
-    <div id="adminResults" class="players-column">
-    </div>
 </div>
-
+<div id="adminResults" class="players-column"> </div>
 <script>
     const searchInput = document.getElementById('adminSearch');
     const searchBtn = document.getElementById('adminSearchBtn');
@@ -27,23 +24,29 @@
             const isAdmin = user.admin === 'true';
 
             const card = document.createElement('div');
-            card.className = 'player-listing';
+            card.className = 'admin-player-listing';
 
             card.innerHTML = `
-                <div class="player-name">${user.username}</div>
-                <div id="player-image">
-                    <img src="${user.img_path}" alt="No image" />
+            <div class="admin-info-row">
+                <div class="admin-user-info">
+                  <div class="player-name">${user.username}</div>
+                  <div>Status: <strong>${status}</strong></div>
                 </div>
-                <div>Status: <strong>${status}</strong></div>
+                <div id="player-image">
+                  <img src="${user.img_path}" alt="No image" />
+                </div>
+              </div>
+              <div class="admin-button-row">
                 <form method="POST" action="/admin/${user.deleted_at ? 'recover' : 'soft-delete'}/${user.user_id}" onsubmit="return confirm('Are you sure you would like to delete this account?')">
-                    <button class="small-button" type="submit">${user.deleted_at ? 'Recover Account' : 'Delete Account'}</button>
+                  <button class="admin-button" type="submit">${user.deleted_at ? 'Recover Account' : 'Delete Account'}</button>
                 </form>
                 <form method="POST" action="/admin/delete/${user.user_id}" onsubmit="return confirm('Are you sure you would like to permanently remove this account from the database?')">
-                    <button class="small-button" type="submit">Remove Permanently</button>
+                  <button class="admin-button" type="submit">Remove Permanently</button>
                 </form>
                 <form method="POST" action="/admin/${isAdmin ? 'remove-admin' : 'make-admin'}/${user.user_id}" onsubmit="return confirm('Are you sure you want to ${isAdmin ? 'remove this admin' : 'make this user an admin'}?')">
-                    <button class="small-button" type="submit">${isAdmin ? 'Remove Admin' : 'Make Admin'}</button>
+                  <button class="admin-button" type="submit">${isAdmin ? 'Remove Admin' : 'Make Admin'}</button>
                 </form>
+            </div>
             `;
 
             resultsDiv.appendChild(card);
