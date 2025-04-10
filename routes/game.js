@@ -35,9 +35,6 @@ router.get('/', async (req, res) => {
 
       const [circle1, circle2, circle3] = await randomNpcs();
 
-      req.session.points = 0;
-      req.session.happiness = 50;
-
       res.render(
         'game', { 
           title: 'Game page',
@@ -66,6 +63,7 @@ router.post('/action', async (req, res) => {
     const { action, circle } = req.body;
 
     let pointChange = 0;
+    let happinessChange = 0;
 
     for (npc of circle) {
       console.log(npc);
@@ -96,12 +94,14 @@ router.post('/action', async (req, res) => {
       req.session.points += pointChange;
     }
 
-    if (req.session.happiness + pointChange > 100) {
+    happinessChange = pointChange;
+
+    if (req.session.happiness + happinessChange > 100) {
       req.session.happiness = 100;
-    } else if (req.session.happiness + pointChange < 0) {
+    } else if (req.session.happiness + happinessChange < 0) {
       req.session.happiness = 0;
     } else {
-      req.session.happiness += pointChange;
+      req.session.happiness += happinessChange;
     }
 
     console.log(req.session.points);

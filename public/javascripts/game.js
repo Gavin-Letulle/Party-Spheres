@@ -31,11 +31,157 @@ document.addEventListener("DOMContentLoaded", function () {
             updateHealthBar(happiness);
             document.querySelector("#current-points").innerText = `Points: ${currentPoints}`;
             document.querySelector("#high-score").innerText = `High Score: ${highScore}`;
+
+            updateCircles(circle1, circle2, circle3);
             
             partyCircles.forEach(c => c.classList.remove("selected-circle"));
         });
     });
 });
+
+function updateCircles(circle1, circle2, circle3) {
+    let circle1Elem = document.getElementById("circle1");
+    let circle2Elem = document.getElementById("circle2");
+    let circle3Elem = document.getElementById("circle3");
+    circle1Elem.setAttribute("data-circle", JSON.stringify(circle1));
+    circle2Elem.setAttribute("data-circle", JSON.stringify(circle2));
+    circle3Elem.setAttribute("data-circle", JSON.stringify(circle3));
+
+    circle1Elem.innerHTML = `<div class = "party-circle-label">Sphere 1</div>`;
+    circle2Elem.innerHTML = `<div class = "party-circle-label">Sphere 2</div>`;
+    circle3Elem.innerHTML = `<div class = "party-circle-label">Sphere 3</div>`;
+    for (let i = 0; i < circle1.length; i++) {
+        const npc = circle1[i];
+
+        let cClass, iClass, hClass;
+        if (npc.likes_compliments == 'true') {
+            cClass = "like-circle-green";
+        } else if (npc.likes_compliments == 'false') {
+            cClass = "like-circle-red";
+        } else {
+            cClass = "like-circle-yellow";
+        }
+
+        if (npc.likes_help == 'true') {
+            hClass = "like-circle-green";
+        } else if (npc.likes_help == 'false') {
+            hClass = "like-circle-red";
+        } else {
+            hClass = "like-circle-yellow";
+        }
+
+        if (npc.likes_invites == 'true') {
+            iClass = "like-circle-green";
+        } else if (npc.likes_invite == 'false') {
+            iClass = "like-circle-red";
+        } else {
+            iClass = "like-circle-yellow";
+        }
+
+        circle1Elem.innerHTML = circle1Elem.innerHTML + 
+        `<div class = "party-circle-name-img" id="circle1-npc${i}">
+            <div class = "party-circle-name">
+                    ${npc.npc_name}
+            </div>
+            <div id = "party-circle-img">
+                <img src="${npc.img_path}" alt="No image">
+            </div>
+            <div class = "like-list-column">
+                <div class = "like-circle" id = "${cClass}">C</div>
+                <div class = "like-circle" id = "${iClass}">I</div>
+                <div class = "like-circle" id = "${hClass}">H</div>
+            </div>
+        </div>`;
+    }
+    for (let i = 0; i < circle2.length; i++) {
+        const npc = circle2[i];
+
+        let cClass, iClass, hClass;
+        if (npc.likes_compliments == 'true') {
+            cClass = "like-circle-green";
+        } else if (npc.likes_compliments == 'false') {
+            cClass = "like-circle-red";
+        } else {
+            cClass = "like-circle-yellow";
+        }
+
+        if (npc.likes_help == 'true') {
+            hClass = "like-circle-green";
+        } else if (npc.likes_help == 'false') {
+            hClass = "like-circle-red";
+        } else {
+            hClass = "like-circle-yellow";
+        }
+
+        if (npc.likes_invites == 'true') {
+            iClass = "like-circle-green";
+        } else if (npc.likes_invite == 'false') {
+            iClass = "like-circle-red";
+        } else {
+            iClass = "like-circle-yellow";
+        }
+
+        circle2Elem.innerHTML = circle2Elem.innerHTML + 
+        `<div class = "party-circle-name-img" id="circle2-npc${i}">
+            <div class = "party-circle-name">
+                    ${npc.npc_name}
+            </div>
+            <div id = "party-circle-img">
+                <img src="${npc.img_path}" alt="No image">
+            </div>
+            <div class = "like-list-column">
+                <div class = "like-circle" id = "${cClass}">C</div>
+                <div class = "like-circle" id = "${iClass}">I</div>
+                <div class = "like-circle" id = "${hClass}">H</div>
+            </div>
+        </div>`;
+    }
+    for (let i = 0; i < circle3.length; i++) {
+        const npc = circle3[i];
+
+        let cClass, iClass, hClass;
+        if (npc.likes_compliments == 'true') {
+            cClass = "like-circle-green";
+        } else if (npc.likes_compliments == 'false') {
+            cClass = "like-circle-red";
+        } else {
+            cClass = "like-circle-yellow";
+        }
+
+        if (npc.likes_help == 'true') {
+            hClass = "like-circle-green";
+        } else if (npc.likes_help == 'false') {
+            hClass = "like-circle-red";
+        } else {
+            hClass = "like-circle-yellow";
+        }
+
+        if (npc.likes_invites == 'true') {
+            iClass = "like-circle-green";
+        } else if (npc.likes_invite == 'false') {
+            iClass = "like-circle-red";
+        } else {
+            iClass = "like-circle-yellow";
+        }
+
+        circle3Elem.innerHTML = circle3Elem.innerHTML + 
+        `<div class = "party-circle-name-img" id="circle3-npc${i}">
+            <div class = "party-circle-name">
+                    ${npc.npc_name}
+            </div>
+            <div id = "party-circle-img">
+                <img src="${npc.img_path}" alt="No image">
+            </div>
+            <div class = "like-list-column">
+                <div class = "like-circle" id = "${cClass}">C</div>
+                <div class = "like-circle" id = "${iClass}">I</div>
+                <div class = "like-circle" id = "${hClass}">H</div>
+            </div>
+        </div>`;
+
+        console.log(circle1Elem.innerHTML);
+    }
+}
 
 function updateHealthBar(percentage) {
     const healthBar = document.getElementById("healthBar");
@@ -57,4 +203,3 @@ function updateHealthBar(percentage) {
         }
     }
 }
-updateHealthBar(50);
