@@ -1041,3 +1041,85 @@ h2 {
   width: 80px;
   height: 80px;
 }
+
+.admin-panel {
+  background-color: #f39af6;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid black;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.admin-player-listing {
+  display: flex;
+  flex-direction: column;
+  background-color: #f5e36f;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid black;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+.admin-info-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.admin-user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.admin-button-row {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  justify-content: center;
+}
+
+.admin-button {
+  padding: 7px 10px;
+  display: block;
+  font-size: 15px;
+  background-color: #ffc74f;
+  color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  text-align: center;
+  font-family: "DynaPuff", serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  text-shadow: 
+    -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px  1px 0 black,
+    1px  1px 0 black;
+}
+
+.admin-button:hover {
+  background-color: #e6b244;
+}
