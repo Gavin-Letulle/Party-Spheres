@@ -60,13 +60,14 @@ router.post('/action', async (req, res) => {
     );
     const user = users[0];
 
+    let newHighScore = user.high_score;
+
     const { action, circle } = req.body;
 
     let pointChange = 0;
     let happinessChange = 0;
 
     for (npc of circle) {
-      console.log(npc);
       if (action == "compliment-button") {
         if (npc.likes_compliments == 'true') {
           pointChange += 5;
@@ -92,6 +93,19 @@ router.post('/action', async (req, res) => {
       req.session.points = 0;
     } else {
       req.session.points += pointChange;
+      await pool.execute(
+        "UPDATE users SET total_points = ? WHERE user_id = ?",
+        [user.total_points + pointChange, req.session.userId]
+      );
+    }
+
+    if (req.session.points > user.high_score) {
+      await pool.execute(
+        "UPDATE users SET high_score = ? WHERE user_id = ?",
+        [req.session.points, req.session.userId]
+      );
+      newHighScore = req.session.points;
+      console.log(newHighScore);
     }
 
     happinessChange = pointChange;
@@ -104,12 +118,10 @@ router.post('/action', async (req, res) => {
       req.session.happiness += happinessChange;
     }
 
-    console.log(req.session.points);
-
     const [circle1, circle2, circle3] = await randomNpcs();
     const response = {
       currentPoints: req.session.points,
-      highScore: 2,
+      highScore: newHighScore,
       happiness: req.session.happiness,
       circle1,
       circle2,

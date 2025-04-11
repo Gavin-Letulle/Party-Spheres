@@ -72,7 +72,7 @@ function updateCircles(circle1, circle2, circle3) {
 
         if (npc.likes_invites == 'true') {
             iClass = "like-circle-green";
-        } else if (npc.likes_invite == 'false') {
+        } else if (npc.likes_invites == 'false') {
             iClass = "like-circle-red";
         } else {
             iClass = "like-circle-yellow";
@@ -115,7 +115,7 @@ function updateCircles(circle1, circle2, circle3) {
 
         if (npc.likes_invites == 'true') {
             iClass = "like-circle-green";
-        } else if (npc.likes_invite == 'false') {
+        } else if (npc.likes_invites == 'false') {
             iClass = "like-circle-red";
         } else {
             iClass = "like-circle-yellow";
@@ -158,7 +158,7 @@ function updateCircles(circle1, circle2, circle3) {
 
         if (npc.likes_invites == 'true') {
             iClass = "like-circle-green";
-        } else if (npc.likes_invite == 'false') {
+        } else if (npc.likes_invites == 'false') {
             iClass = "like-circle-red";
         } else {
             iClass = "like-circle-yellow";
@@ -187,7 +187,7 @@ function updateHealthBar(percentage) {
     const healthBar = document.getElementById("healthBar");
     healthBar.style.setProperty("--health", percentage + "%");
 
-    if (percentage === 100) {
+    if (percentage == 100) {
         healthBar.classList.add("rainbow-effect");
     } else {
         healthBar.classList.remove("rainbow-effect");
@@ -203,3 +203,4 @@ function updateHealthBar(percentage) {
         }
     }
 }
+updateHealthBar(document.querySelector("#healthBar").getAttribute("data-happiness"));
