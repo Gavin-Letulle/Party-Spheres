@@ -134,4 +134,16 @@ router.post('/action', async (req, res) => {
   }
 });
 
+router.post('/update-happiness', async (req, res) => {
+  try {
+    const { happiness } = req.body;
+    req.session.happiness = happiness;
+
+    res.status(200).send("Happiness updated successfully");
+  } catch(error) {
+    console.error("Error completing game action:", error);
+    res.status(500).send('Error processing game action.');
+  }
+});
+
 module.exports = router;

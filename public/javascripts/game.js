@@ -186,6 +186,7 @@ function updateCircles(circle1, circle2, circle3) {
 function updateHealthBar(percentage) {
     const healthBar = document.getElementById("healthBar");
     healthBar.style.setProperty("--health", percentage + "%");
+    healthBar.setAttribute("data-happiness", percentage);
 
     if (percentage == 100) {
         healthBar.classList.add("rainbow-effect");
@@ -204,3 +205,18 @@ function updateHealthBar(percentage) {
     }
 }
 updateHealthBar(document.querySelector("#healthBar").getAttribute("data-happiness"));
+
+setInterval(async () => {
+    let happiness = document.querySelector("#healthBar").getAttribute("data-happiness");
+    if (happiness - 5 >= 0) {
+        happiness -= 5;
+    }
+    updateHealthBar(happiness);
+    const response = await fetch("/game/update-happiness", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ happiness })
+    });
+}, 2000);
