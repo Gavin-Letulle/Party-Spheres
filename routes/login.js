@@ -45,6 +45,8 @@ router.post('/', async (req, res) => {
         }
 
         req.session.userId = user.user_id;
+        req.session.points = 0;
+        req.session.happiness = 50;
         res.redirect('/myAccount');
     } catch (err) {
         console.error("Error logging in:", err);

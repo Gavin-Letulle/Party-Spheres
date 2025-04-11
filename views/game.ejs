@@ -1,12 +1,12 @@
 <%- include('./partials/header', { currentPage: 'home'}) %>
 <div class = "party-circle-header">Click one group and then make an action:</div>
 <div class="points-health">
-    <div class="game-points">Points: <%= user.total_points %></div>
+    <div class="game-points" id="current-points">Points: <%= points %></div>
     <div class="health-container">
         <span class="health-label">Happiness</span>
-        <div class="health-bar" id="healthBar" style="--health: 100%;"></div>
+        <div class="health-bar" id="healthBar" data-happiness="<%= happiness %>" style="--health: <%= happiness %>%;"></div>
     </div>
-    <div class="game-points">High Score: <%= user.high_score %></div>
+    <div class="game-points" id="high-score">High Score: <%= user.high_score %></div>
 </div>
 <div class = "party-circle-group">
     <div class = "party-circle" id="circle1" data-circle="<%= JSON.stringify(circle1)%> ">
@@ -35,14 +35,14 @@
 
             if (npc.likes_invites == 'true') {
                 iClass = "like-circle-green";
-            } else if (npc.likes_invite == 'false') {
+            } else if (npc.likes_invites == 'false') {
                 iClass = "like-circle-red";
             } else {
                 iClass = "like-circle-yellow";
             }
 
             %>
-            <div class = "party-circle-name-img">
+            <div class = "party-circle-name-img" id="circle1-npc<%=i%>">
                 <div class = "party-circle-name">
                     <%= npc.npc_name %>
                 </div>
@@ -83,14 +83,14 @@
 
             if (npc.likes_invites == 'true') {
                 iClass = "like-circle-green";
-            } else if (npc.likes_invite == 'false') {
+            } else if (npc.likes_invites == 'false') {
                 iClass = "like-circle-red";
             } else {
                 iClass = "like-circle-yellow";
             }
 
             %>
-            <div class = "party-circle-name-img">
+            <div class = "party-circle-name-img" id="circle2-npc<%=i%>">
                 <div class = "party-circle-name">
                     <%= npc.npc_name %>
                 </div>
@@ -131,14 +131,14 @@
 
             if (npc.likes_invites == 'true') {
                 iClass = "like-circle-green";
-            } else if (npc.likes_invite == 'false') {
+            } else if (npc.likes_invites == 'false') {
                 iClass = "like-circle-red";
             } else {
                 iClass = "like-circle-yellow";
             }
 
             %>
-            <div class = "party-circle-name-img">
+            <div class = "party-circle-name-img" id="circle3-npc<%=i%>">
                 <div class = "party-circle-name">
                     <%= npc.npc_name %>
                 </div>
