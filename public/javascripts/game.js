@@ -222,9 +222,9 @@ setInterval(async () => {
             },
         });
         document.querySelector("main").innerHTML = `
-            <div class = "party-circle-header">GAME OVER</div>
-            <p>Your NPCs got too sad and left :(. Want to play again?</p>
-            
+            <div class="party-circle-header">GAME OVER</div>
+            <p style="text-align:center;">Oh no! Your NPCs got too sad and left. Want to play again?</p>
+            <div class="game-button-row"><div class="game-button" onclick="location.reload()">Play Again</div></div>
         `;
         
         return;
