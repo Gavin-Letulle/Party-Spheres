@@ -211,7 +211,25 @@ setInterval(async () => {
     if (happiness - 5 >= 0) {
         happiness -= 5;
     }
+
     updateHealthBar(happiness);
+
+    if (happiness == 0) {
+        await fetch("/game/game-over", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+        document.querySelector("main").innerHTML = `
+            <div class = "party-circle-header">GAME OVER</div>
+            <p>Your NPCs got too sad and left :(. Want to play again?</p>
+            
+        `;
+        
+        return;
+    }
+
     const response = await fetch("/game/update-happiness", {
         method: 'POST',
         headers: {

@@ -146,4 +146,17 @@ router.post('/update-happiness', async (req, res) => {
   }
 });
 
+
+router.post('/game-over', async (req, res) => {
+  try {
+    req.session.happiness = 50;
+    req.session.points = 0;
+
+    res.status(200).send("Game ended successfully");
+  } catch(error) {
+    console.error("Error ending game:", error);
+    res.status(500).send('Error ending game.');
+  }
+});
+
 module.exports = router;
