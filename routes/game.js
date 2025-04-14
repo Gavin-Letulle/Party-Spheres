@@ -41,7 +41,6 @@ router.get('/', async (req, res) => {
         req.session.highScore = 0;
       }
 
-      console.log(req.session.highScore);
       const [circle1, circle2, circle3] = await randomNpcs();
 
       res.render(
