@@ -141,8 +141,21 @@ router.post('/update-happiness', async (req, res) => {
 
     res.status(200).send("Happiness updated successfully");
   } catch(error) {
-    console.error("Error completing game action:", error);
-    res.status(500).send('Error processing game action.');
+    console.error("Error updating happiness:", error);
+    res.status(500).send('Error processing happiness change.');
+  }
+});
+
+
+router.post('/game-over', async (req, res) => {
+  try {
+    req.session.happiness = 50;
+    req.session.points = 0;
+
+    res.status(200).send("Game ended successfully");
+  } catch(error) {
+    console.error("Error ending game:", error);
+    res.status(500).send('Error ending game.');
   }
 });
 
