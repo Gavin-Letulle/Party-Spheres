@@ -21,24 +21,49 @@ async function randomNpcs() {
   return [circle1, circle2, circle3];
 }
 
+async function getUser(userId) {
+  const [users] = await pool.execute(
+    "SELECT total_points, high_score FROM users WHERE user_id = ?", 
+    [userId]
+  );
+  return users[0];
+}
+
 router.get('/', async (req, res) => {
   try {
     if (!req.session.userId) {
-      return res.redirect('/login'); 
-    //  return res.status(401).send('Unauthorized: Please log in.');
-    } else {
-      const [users] = await pool.execute(
-          "SELECT total_points, high_score FROM users WHERE user_id = ?", 
-          [req.session.userId]
-      );
-      const user = users[0];
+      if (!req.session.points && !req.session.happiness) {
+        req.session.points = 0;
+        req.session.happiness = 50;
+      }
 
+      if (!req.session.highScore) {
+        req.session.highScore = 0;
+      }
+
+      console.log(req.session.highScore);
       const [circle1, circle2, circle3] = await randomNpcs();
 
       res.render(
         'game', { 
           title: 'Game page',
-          user,
+          highScore: req.session.highScore,
+          points: req.session.points,
+          happiness: req.session.happiness,
+          circle1,
+          circle2,
+          circle3
+      });
+    } else {
+      const user = await getUser(req.session.userId);
+
+      req.session.highScore = user.high_score;
+      const [circle1, circle2, circle3] = await randomNpcs();
+
+      res.render(
+        'game', { 
+          title: 'Game page',
+          highScore: req.session.highScore,
           points: req.session.points,
           happiness: req.session.happiness,
           circle1,
@@ -54,13 +79,7 @@ router.get('/', async (req, res) => {
 
 router.post('/action', async (req, res) => {
   try {
-    const [users] = await pool.execute(
-      "SELECT total_points, high_score FROM users WHERE user_id = ?", 
-      [req.session.userId]
-    );
-    const user = users[0];
-
-    let newHighScore = user.high_score;
+    let newHighScore = req.session.highScore;
 
     const { action, circle } = req.body;
 
@@ -70,21 +89,21 @@ router.post('/action', async (req, res) => {
     for (npc of circle) {
       if (action == "compliment-button") {
         if (npc.likes_compliments == 'true') {
-          pointChange += 5;
+          pointChange += 7;
         } else if (npc.likes_compliments == 'false') {
-          pointChange -= 5;
+          pointChange -= 7;
         }
       } else if (action == "invite-button") {
         if (npc.likes_invites == 'true') {
-          pointChange += 5;
+          pointChange += 7;
         } else if (npc.likes_invites == 'false') {
-          pointChange -= 5;
+          pointChange -= 7;
         }
       } else {
         if (npc.likes_help == 'true') {
-          pointChange += 5;
+          pointChange += 7;
         } else if (npc.likes_help == 'false') {
-          pointChange -= 5;
+          pointChange -= 7;
         }
       }
     }
@@ -93,19 +112,24 @@ router.post('/action', async (req, res) => {
       req.session.points = 0;
     } else {
       req.session.points += pointChange;
-      await pool.execute(
-        "UPDATE users SET total_points = ? WHERE user_id = ?",
-        [user.total_points + pointChange, req.session.userId]
-      );
+      if (req.session.userId) {
+        const user = await getUser(req.session.userId);
+        await pool.execute(
+          "UPDATE users SET total_points = ? WHERE user_id = ?",
+          [user.total_points + pointChange, req.session.userId]
+        );
+      }
     }
 
-    if (req.session.points > user.high_score) {
-      await pool.execute(
-        "UPDATE users SET high_score = ? WHERE user_id = ?",
-        [req.session.points, req.session.userId]
-      );
+    if (req.session.points > req.session.highScore) {
+      if (req.session.userId) {
+        await pool.execute(
+          "UPDATE users SET high_score = ? WHERE user_id = ?",
+          [req.session.points, req.session.userId]
+        );
+      }
       newHighScore = req.session.points;
-      console.log(newHighScore);
+      req.session.highScore = newHighScore;
     }
 
     happinessChange = pointChange;
@@ -121,7 +145,7 @@ router.post('/action', async (req, res) => {
     const [circle1, circle2, circle3] = await randomNpcs();
     const response = {
       currentPoints: req.session.points,
-      highScore: newHighScore,
+      highScore: req.session.highScore,
       happiness: req.session.happiness,
       circle1,
       circle2,
