@@ -141,8 +141,8 @@ router.post('/update-happiness', async (req, res) => {
 
     res.status(200).send("Happiness updated successfully");
   } catch(error) {
-    console.error("Error completing game action:", error);
-    res.status(500).send('Error processing game action.');
+    console.error("Error updating happiness:", error);
+    res.status(500).send('Error processing happiness change.');
   }
 });
 
