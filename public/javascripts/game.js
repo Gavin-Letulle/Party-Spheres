@@ -208,8 +208,10 @@ updateHealthBar(document.querySelector("#healthBar").getAttribute("data-happines
 
 setInterval(async () => {
     let happiness = document.querySelector("#healthBar").getAttribute("data-happiness");
-    if (happiness - 5 >= 0) {
-        happiness -= 5;
+    if (happiness - 10 >= 0) {
+        happiness -= 10;
+    } else {
+        happiness = 0;
     }
 
     updateHealthBar(happiness);
@@ -237,4 +239,4 @@ setInterval(async () => {
         },
         body: JSON.stringify({ happiness })
     });
-}, 2000);
+}, 4000);
