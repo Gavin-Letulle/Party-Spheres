@@ -1123,3 +1123,32 @@ h2 {
 .admin-button:hover {
   background-color: #e6b244;
 }
+
+.game-over-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 60vh;
+  text-align: center;
+}
+
+.game-over-header {
+  font-size: 80px;
+  color: white;
+  text-shadow: 
+    -1.1px -1.1px 0 black,  
+    1.1px -1.1px 0 black,
+    -1.1px  1.1px 0 black,
+    1.1px  1.1px 0 black;
+  margin-top: 12px;
+  margin-bottom: 20px;
+  align-items: center;
+  text-align: center;
+}
+
+.game-over-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  margin-bottom: 12px;
+}

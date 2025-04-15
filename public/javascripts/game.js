@@ -223,13 +223,15 @@ setInterval(async () => {
         const { finalPoints, finalHighScore } = await response.json();
 
         document.querySelector("main").innerHTML = `
-            <div class="party-circle-header">GAME OVER</div>
-            <p style="text-align:center;">
-                Oh no! Your NPCs got too sad and left.<br>
-                Score for this Round: ${finalPoints}<br>
-                High Score: ${finalHighScore}
-            </p>
-            <div class="game-button-row"><div class="game-button" onclick="location.reload()">Play Again</div></div>
+            <div class = "game-over-container">
+                <div class="game-over-header">GAME OVER</div>
+                <div class="game-over-text"> Oh no! Everyone got too sad and died. </div>
+                <div class="game-over-text"> Score for this Round: ${finalPoints} </div>
+                <div class="game-over-text"> High Score: ${finalHighScore} </div>
+                <div class="game-button-row" style="margin-top: 25px">
+                    <div class="game-button" onclick="location.reload()">Play Again</div>
+                </div>
+            </div>
         `;
         
         return;
