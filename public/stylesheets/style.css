@@ -8,6 +8,8 @@ body {
 
 .heading {
   background: linear-gradient(to right, #73ff8f, #02dc2d);
+  display: flex;
+  flex-direction: row;
   color: white;
   font-size: 60px;
   font-family: "DynaPuff", serif;
@@ -23,10 +25,36 @@ body {
     1.25px -1.25px 0 black,
     -1.25px  1.25px 0 black,
     1.25px  1.25px 0 black;
+  text-decoration: none; 
+}
+
+@media (max-width: 600px) {
+  .heading-img {
+    display: none;
+  }
+}
+
+#ps1{
+  width: 80px; 
+  height: auto; 
+  margin-left: 40px;
+}
+
+#ps2{
+  width: 60px; 
+  height: auto; 
+  margin-right: 58px;
+}
+
+.heading-img img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 header {
   display: flex;
+  flex-direction: row;
   background-color: #333333;
   color: white;
   font-size: 15px;
@@ -57,9 +85,16 @@ a {
 
 .link-row {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   gap: 40px;
   text-align: center;
+}
+
+@media (max-width: 600px) {
+  .link-row {
+    gap: 30px;
+  }
 }
 
 .link-item {
@@ -162,11 +197,11 @@ a {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  min-width: 270px;
+  min-width: 320px;
 }
 
 .leaderboard h2 {
-  font-size: 36px;
+  font-size: 38px;
   text-align: center;
   color: white;
   margin-bottom: 3px;
@@ -191,7 +226,7 @@ a {
     -1.25px  1.25px 0 black,
     1.25px  1.25px 0 black;
   background: #ffc74f;
-  font-size: 18px;
+  font-size: 20px;
   color: white;
   text-align: center;
 }
@@ -203,7 +238,7 @@ a {
 
 .leaderboard-table td {
   padding: 10px;
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
   text-align: center;
 }
@@ -320,11 +355,23 @@ a {
   border: 2px solid black;
   width: 100%;
   max-width: 600px;
-  margin: 0 auto;
-  margin-top: 8px;
+  margin: 8px auto 0;
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
 }
+
+@media (max-width: 600px) {
+  .account-details {
+    padding: 15px 12px;
+    border-radius: 8px;
+    width: 92%;
+  }
+}
+
+
 
 .account-group {
   display: flex;
@@ -377,6 +424,12 @@ h2 {
   gap: 70px;
 }
 
+@media (max-width: 600px) {
+  .edit-logout {
+    gap: 25px;
+  }
+}
+
 #editButton {
   font-size: 18px;
   background-color: #ffc74f;
@@ -427,6 +480,19 @@ h2 {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  min-width: 0;
+  margin-top: 8px
+}
+
+@media (max-width: 600px) {
+  .account-form {
+    padding: 15px 12px;
+    border-radius: 8px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
+    width: 92%;
+  }
 }
 
 .account-form h2 {
@@ -461,7 +527,7 @@ h2 {
 }
 
 .account-form-group input, .account-form-group textarea {
-  width: 100%;
+  width: 94%;
   padding: 10px;
   font-size: 16px;
   margin-top: 10px;
@@ -470,7 +536,6 @@ h2 {
   border-radius: 5px;
   background-color: white;
   justify-content: center;
-  max-width: 560px;
 }
 
 .account-form-group textarea {
@@ -732,6 +797,15 @@ h2 {
   align-items: center;
 }
 
+@media (max-width: 600px) {
+  .characters-info {
+    padding: 20px 15px;
+    min-width: auto;
+    width: 92%;
+    box-sizing: border-box;
+  }
+}
+
 .characters-row {
   display: flex;
   flex-wrap: wrap;
@@ -811,7 +885,7 @@ h2 {
   margin-top: 8px;
   display: flex;
   flex-direction: column;
-  min-width: 290px;
+  min-width: 400px;
 }
 
 .character-group {
@@ -885,7 +959,7 @@ h2 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border: 2px solid black;
   width: 100%;
-  max-width: 600px;
+  max-width: 400px;
   margin: 0 auto;
   margin-top: 8px;
   display: flex;
@@ -939,6 +1013,15 @@ h2 {
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
+}
+
+@media (max-width: 600px) {
+  .player-search {
+    padding: 15px 12px;
+    border-radius: 8px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
+    max-width: 90%;
+  }
 }
 
 .player-search-bar {
@@ -1055,6 +1138,15 @@ h2 {
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
+}
+
+@media (max-width: 600px) {
+  .admin-panel {
+    padding: 15px 12px;
+    border-radius: 8px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
+    max-width: 90%;
+  }
 }
 
 .admin-player-listing {
