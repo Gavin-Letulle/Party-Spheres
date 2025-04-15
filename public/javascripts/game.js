@@ -221,7 +221,7 @@ setInterval(async () => {
             },
         });
         const { finalPoints, finalHighScore } = await response.json();
-        console.log(JSON.stringify(response));
+
         document.querySelector("main").innerHTML = `
             <div class="party-circle-header">GAME OVER</div>
             <p style="text-align:center;">
