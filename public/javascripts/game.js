@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const selectedCircle = document.querySelector(".selected-circle");
             const circle = JSON.parse(selectedCircle.getAttribute("data-circle"));
             const action = button.id;
-            console.log(circle[0]);
 
             const response = await fetch("/game/action", {
                 method: 'POST',
@@ -178,8 +177,6 @@ function updateCircles(circle1, circle2, circle3) {
                 <div class = "like-circle" id = "${hClass}">H</div>
             </div>
         </div>`;
-
-        console.log(circle1Elem.innerHTML);
     }
 }
 
@@ -217,22 +214,28 @@ setInterval(async () => {
     updateHealthBar(happiness);
 
     if (happiness == 0) {
-        await fetch("/game/game-over", {
+        const response = await fetch("/game/game-over", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
         });
+        const { finalPoints, finalHighScore } = await response.json();
+        console.log(JSON.stringify(response));
         document.querySelector("main").innerHTML = `
             <div class="party-circle-header">GAME OVER</div>
-            <p style="text-align:center;">Oh no! Your NPCs got too sad and left. Want to play again?</p>
+            <p style="text-align:center;">
+                Oh no! Your NPCs got too sad and left.<br>
+                Points: ${finalPoints}<br>
+                High Score: ${finalHighScore}
+            </p>
             <div class="game-button-row"><div class="game-button" onclick="location.reload()">Play Again</div></div>
         `;
         
         return;
     }
 
-    const response = await fetch("/game/update-happiness", {
+    await fetch("/game/update-happiness", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
