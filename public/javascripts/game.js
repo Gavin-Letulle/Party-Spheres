@@ -205,8 +205,8 @@ updateHealthBar(document.querySelector("#healthBar").getAttribute("data-happines
 
 setInterval(async () => {
     let happiness = document.querySelector("#healthBar").getAttribute("data-happiness");
-    if (happiness - 10 >= 0) {
-        happiness -= 10;
+    if (happiness - 8 >= 0) {
+        happiness -= 8;
     } else {
         happiness = 0;
     }

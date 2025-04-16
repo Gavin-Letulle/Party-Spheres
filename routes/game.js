@@ -88,21 +88,21 @@ router.post('/action', async (req, res) => {
     for (npc of circle) {
       if (action == "compliment-button") {
         if (npc.likes_compliments == 'true') {
-          pointChange += 7;
+          pointChange += 5;
         } else if (npc.likes_compliments == 'false') {
-          pointChange -= 7;
+          pointChange -= 5;
         }
       } else if (action == "invite-button") {
         if (npc.likes_invites == 'true') {
-          pointChange += 7;
+          pointChange += 5;
         } else if (npc.likes_invites == 'false') {
-          pointChange -= 7;
+          pointChange -= 5;
         }
       } else {
         if (npc.likes_help == 'true') {
-          pointChange += 7;
+          pointChange += 5;
         } else if (npc.likes_help == 'false') {
-          pointChange -= 7;
+          pointChange -= 5;
         }
       }
     }
