@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const pool = require('../database/connection');  
 
+// Shuffles around the passed in array
 function shuffleArray(array){
   for (var i = array.length - 1; i > 0; i--) {
       var rand = Math.floor(Math.random() * (i + 1));
@@ -21,6 +22,7 @@ async function randomNpcs() {
   return [circle1, circle2, circle3];
 }
 
+// Retrieves a user (their total points and high score attributes) from the users table based on a passed in user ID
 async function getUser(userId) {
   const [users] = await pool.execute(
     "SELECT total_points, high_score FROM users WHERE user_id = ?", 
@@ -29,8 +31,10 @@ async function getUser(userId) {
   return users[0];
 }
 
+// Main GET router for game page
 router.get('/', async (req, res) => {
   try {
+    // For guests (not logged in)
     if (!req.session.userId) {
       if (!req.session.points && !req.session.happiness) {
         req.session.points = 0;
@@ -53,6 +57,7 @@ router.get('/', async (req, res) => {
           circle2,
           circle3
       });
+    // For logged in users
     } else {
       const user = await getUser(req.session.userId);
 
@@ -76,6 +81,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// POST method for executing an action on a specific circle
 router.post('/action', async (req, res) => {
   try {
     let newHighScore = req.session.highScore;
@@ -157,6 +163,7 @@ router.post('/action', async (req, res) => {
   }
 });
 
+// POST method for updating current session happiness
 router.post('/update-happiness', async (req, res) => {
   try {
     const { happiness } = req.body;
@@ -169,7 +176,7 @@ router.post('/update-happiness', async (req, res) => {
   }
 });
 
-
+// POST method for handling game over input and resetting game state
 router.post('/game-over', async (req, res) => {
   try {
     const response = {
