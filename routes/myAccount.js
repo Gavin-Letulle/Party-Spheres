@@ -38,7 +38,7 @@ const sessionMiddleware = require('./sessionMiddleware');
  *                 admin:
  *                   type: boolean
  *       401:
- *         description: Unauthorized: Please log in
+ *         description: Unauthorized - please log in
  *       404:
  *         description: User not found
  *       500:

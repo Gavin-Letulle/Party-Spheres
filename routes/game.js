@@ -92,7 +92,71 @@ router.get('/', async (req, res) => {
   }
 });
 
-// POST method for executing an action on a specific circle
+/**
+ * @swagger
+ * /game/action:
+ *   post:
+ *     summary: Execute an action on a circle of NPCs
+ *     description: |
+ *       Applies the specified action (compliment, invite, help) to each NPC in the circle.
+ *       Updates user session values such as points, high score, and happiness.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               action:
+ *                 type: string
+ *                 enum: [compliment-button, invite-button, help-button]
+ *                 description: Action to perform on each NPC
+ *               circle:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ *                   properties:
+ *                     likes_compliments:
+ *                       type: string
+ *                       enum: ['true', 'false', 'neutral']
+ *                       description: NPC's response to compliments
+ *                     likes_invites:
+ *                       type: string
+ *                       enum: ['true', 'false', 'neutral']
+ *                       description: NPC's response to invites
+ *                     likes_help:
+ *                       type: string
+ *                       enum: ['true', 'false', 'neutral']
+ *                       description: NPC's response to help
+ *     responses:
+ *       200:
+ *         description: Game state updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 currentPoints:
+ *                   type: integer
+ *                 highScore:
+ *                   type: integer
+ *                 happiness:
+ *                   type: integer
+ *                 circle1:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                 circle2:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                 circle3:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *       500:
+ *         description: Server error while processing the action
+ */
 router.post('/action', async (req, res) => {
   try {
     let newHighScore = req.session.highScore;
@@ -174,7 +238,34 @@ router.post('/action', async (req, res) => {
   }
 });
 
-// POST method for updating current session happiness
+/**
+ * @swagger
+ * /game/update-happiness:
+ *   post:
+ *     summary: Update the current session's happiness
+ *     description: Updates the user's session with a new happiness value.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               happiness:
+ *                 type: integer
+ *                 description: New happiness value to set in the session
+ *                 example: 75
+ *     responses:
+ *       200:
+ *         description: Happiness updated successfully
+ *         content:
+ *           text/plain:
+ *             schema:
+ *               type: string
+ *               example: Happiness updated successfully
+ *       500:
+ *         description: Server error while updating happiness
+ */
 router.post('/update-happiness', async (req, res) => {
   try {
     const { happiness } = req.body;
@@ -187,7 +278,30 @@ router.post('/update-happiness', async (req, res) => {
   }
 });
 
-// POST method for handling game over input and resetting game state
+/**
+ * @swagger
+ * /game/game-over:
+ *   post:
+ *     summary: Handle game over and reset game state
+ *     description: |
+ *       Returns final session stats (points and high score), then resets points and happiness.
+ *     responses:
+ *       200:
+ *         description: Game ended and session state reset
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 finalPoints:
+ *                   type: integer
+ *                   description: Final points before reset
+ *                 finalHighScore:
+ *                   type: integer
+ *                   description: Final high score before reset
+ *       500:
+ *         description: Server error while ending game
+ */
 router.post('/game-over', async (req, res) => {
   try {
     const response = {
