@@ -127,3 +127,6 @@ privkey.pem
 
 # DS_Store MacOS file
 .DS_Store
+
+# Environment File
+.env
