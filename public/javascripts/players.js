@@ -1,11 +1,9 @@
-
 const input = document.getElementById('playerInput');
 const button = document.getElementById('searchPlayer');
 const list = document.getElementById('playersList');
 
 async function searchPlayers() {
     const query = input.value;
-
     const res = await fetch(`/players/search?q=${encodeURIComponent(query)}`);
     const data = await res.json();
 
