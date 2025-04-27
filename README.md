@@ -13,7 +13,7 @@
 - Go to http://localhost:3000/.
 - OR go to https://partyspheres.duckdns.org/ (for public site).
 - To view the Swagger API Documentation, go to http://localhost:3000/api-docs.
-- The app will automatically connect to the mySQL database hosted on the Amazon RDS instance, as long as the .env file is in the project folder
+- The app will automatically connect to the mySQL database hosted on the Amazon RDS instance, as long as the .env file is in the project folder.
 
 #### For Using the Website
 
