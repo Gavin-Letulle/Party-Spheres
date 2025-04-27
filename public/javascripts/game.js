@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const partyCircles = document.querySelectorAll(".party-circle");
     const gameButtons = document.querySelectorAll(".game-button");
 
+    // Handles highlighting a circle when it is clicked ("selected") by the user
     partyCircles.forEach(circle => {
         circle.addEventListener("click", function () {
             const isSelected = circle.classList.contains("selected-circle");
@@ -12,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // Sends POST request to server when an action is made to update point/happiness values and randomize circles
     gameButtons.forEach(button => {
         button.addEventListener("click", async () => {
             const selectedCircle = document.querySelector(".selected-circle");
@@ -38,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// Changes the circles (and all elements inside) on page to be the three new circles passed in
 function updateCircles(circle1, circle2, circle3) {
     let circle1Elem = document.getElementById("circle1");
     let circle2Elem = document.getElementById("circle2");
@@ -180,6 +183,7 @@ function updateCircles(circle1, circle2, circle3) {
     }
 }
 
+// Takes in a percentage and updates the health/happiness bar to be the correct length and corresponding color
 function updateHealthBar(percentage) {
     const healthBar = document.getElementById("healthBar");
     healthBar.style.setProperty("--health", percentage + "%");
@@ -201,8 +205,11 @@ function updateHealthBar(percentage) {
         }
     }
 }
+
+// Sets health bar to have correct look on page load
 updateHealthBar(document.querySelector("#healthBar").getAttribute("data-happiness"));
 
+// Repeats every 4 seconds to decrement happiness bar and handle game over case
 setInterval(async () => {
     let happiness = document.querySelector("#healthBar").getAttribute("data-happiness");
     if (happiness - 8 >= 0) {

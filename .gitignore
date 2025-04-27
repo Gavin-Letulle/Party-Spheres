@@ -124,3 +124,6 @@ dist
 .yarn/install-state.gz
 .pnp.*
 privkey.pem
+
+# DS_Store MacOS file
+.DS_Store
