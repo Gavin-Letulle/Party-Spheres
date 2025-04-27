@@ -1,9 +1,7 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const leaderboardCells = document.querySelectorAll(".leaderboard-table td");
-
-    leaderboardCells.forEach(cell => {
-        cell.addEventListener("click", function () {
-            window.location.href = "/profile";
-        });
+document.querySelectorAll('.clickable-row').forEach(row => {
+    row.addEventListener('click', function() {
+        const userId = this.getAttribute('data-user-id');
+        window.location.href = `/profile/${userId}`;
     });
 });
+
