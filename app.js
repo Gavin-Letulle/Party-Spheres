@@ -6,6 +6,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const swaggerUI = require('swagger-ui-express');
+const swaggerSpec = require('./swagger');
+
 var homeRouter = require('./routes/home');
 const accountRouterRouter = require('./routes/accountRouter');
 const myAccountRouter = require('./routes/myAccount')
@@ -47,6 +50,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Serve Swagger documentation
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
+
+// Routers
 app.use('/', homeRouter);
 app.use('/accountRouter', accountRouterRouter);
 app.use('/leaderboard', leaderboardRouter);

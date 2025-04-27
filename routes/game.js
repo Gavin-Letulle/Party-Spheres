@@ -31,7 +31,18 @@ async function getUser(userId) {
   return users[0];
 }
 
-// Main GET router for game page
+ /**
+ * @swagger
+ * /game:
+ *   get:
+ *     summary: Renders the main game page.
+ *     description: Retrieves current game state (or creates new state if no game was already present) and renders the main game page.
+ *     responses:
+ *       200:
+ *         description: Correctly rendered game page.
+ *       500:
+ *          description: Error loading game state.
+*/
 router.get('/', async (req, res) => {
   try {
     // For guests (not logged in)
