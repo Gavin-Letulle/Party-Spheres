@@ -5,7 +5,7 @@ const swaggerDefinition = {
     info: {
         title: 'Party Spheres',
         version: '1.0.0',
-        description: 'This is the documentation for the routing methods of the Party Spheres website.',
+        description: 'This is the documentation for the API methods of the Party Spheres website.',
     },
 };
 

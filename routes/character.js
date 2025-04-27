@@ -2,6 +2,27 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../database/connection'); 
 
+/**
+ * @swagger
+ * /characters/{npc_id}:
+ *   get:
+ *     summary: Get character details by NPC ID
+ *     description: Retrieves information about a specific NPC, including their name, bio, and reaction preferences.
+ *     parameters:
+ *       - in: path
+ *         name: npc_id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: The ID of the NPC to retrieve.
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved character data and rendered the character page.
+ *       404:
+ *         description: Character not found.
+ *       500:
+ *         description: Server error.
+ */
 router.get('/:npc_id', async (req, res) => {
     const { npc_id } = req.params;
 

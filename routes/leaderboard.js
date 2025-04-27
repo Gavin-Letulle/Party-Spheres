@@ -2,6 +2,18 @@ const express = require('express');
 const pool = require('../database/connection');
 const router = express.Router();
 
+/**
+ * @swagger
+ * /leaderboard:
+ *   get:
+ *     summary: Get the top 10 users by high score
+ *     description: Retrieves and displays the top 10 users sorted by their high scores
+ *     responses:
+ *       200:
+ *         description: Leaderboard page rendered successfully
+ *       500:
+ *         description: Server error loading leaderboard
+ */
 router.get('/', async (req, res) => {
     try {
         const [users] = await pool.execute(

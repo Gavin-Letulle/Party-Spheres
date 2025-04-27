@@ -8,6 +8,25 @@ const path = require('path');
 
 const IMAGES_DIR = path.join(__dirname, '../public/images');
 
+
+/**
+ * @swagger
+ * /edit:
+ *   get:
+ *     summary: Display the edit account page for the logged-in user
+ *     description: Fetches the current user's account details and a list of available profile images, then renders the edit account page.
+ *     security:
+ *       - cookieAuth: []
+ *     responses:
+ *       200:
+ *         description: Successfully fetched user details and rendered the edit page.
+ *       401:
+ *         description: Unauthorized - User must be logged in.
+ *       404:
+ *         description: User not found.
+ *       500:
+ *         description: Server error while fetching account details or images.
+ */
 router.get('/', sessionMiddleware, async (req, res) => {
     if (!req.session.userId) {
         return res.status(401).send('Unauthorized: Please log in.');
@@ -48,48 +67,89 @@ router.get('/', sessionMiddleware, async (req, res) => {
     }
 });
 
+/**
+ * @swagger
+ * /edit:
+ *   post:
+ *     summary: Update or delete the user's account
+ *     description: Allows a logged-in user to update their account details or delete their account. Deletion logs the user out.
+ *     security:
+ *       - cookieAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/x-www-form-urlencoded:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               player_name:
+ *                 type: string
+ *               bio:
+ *                 type: string
+ *               img_path:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *               confirmPassword:
+ *                 type: string
+ *               deleteAccount:
+ *                 type: string
+ *                 description: If set to 'true', the account will be soft-deleted.
+ *     responses:
+ *       302:
+ *         description: Successfully updated account or deleted account (redirects).
+ *       401:
+ *         description: Unauthorized - User must be logged in.
+ *       500:
+ *         description: Server error while updating or deleting account.
+ */
 router.post('/', sessionMiddleware, async (req, res) => {
     if (!req.session.userId) {
         return res.status(401).send('Unauthorized: Please log in.');
     }
 
-    // Check if the deleteAccount parameter is present
+    // check whether the user has selected to delete their account
     if (req.body.deleteAccount === 'true') {
         try {
-            // Update the deleted_at column with the current timestamp
+            // account deletion is just handled by the deleted_at timestamp column in the database
             await pool.execute(
                 "UPDATE users SET deleted_at = NOW() WHERE user_id = ?",
                 [req.session.userId]
             );
 
-            // Destroy the session to log the user out
+            // delete the login session and redirect to home page
             req.session.destroy(err => {
                 if (err) {
                     console.error("Error destroying session:", err);
                     return res.status(500).send('Error logging out.');
                 }
-                res.redirect('/');  // Redirect to homepage or login page after deletion
+                res.redirect('/');  
             });
         } catch (error) {
             console.error("Error deleting account:", error);
             res.status(500).send('Error deleting account.');
         }
-        return;  // Ensure the function exits here if account is being deleted
+        return;  
     }
 
     try {
         const { username, email, player_name, bio, password, confirmPassword, img_path } = req.body;
 
+        // handle the case that passwords don't match
         if (password && password !== confirmPassword) {
             return res.render('edit', { 
                 title: 'Edit Account', 
                 error: "Passwords do not match.",
                 user: req.body,
-                images: await getImages()  // Ensure images are passed even on error
+                images: await getImages()  
             });
         }
 
-        // Check if email is already in use by another user
+        // handle the case that email is already in-use
         const [emailCheck] = await pool.execute(
             "SELECT * FROM users WHERE email = ? AND user_id != ?", 
             [email, req.session.userId]
@@ -99,11 +159,11 @@ router.post('/', sessionMiddleware, async (req, res) => {
                 title: 'Edit Account', 
                 error: "This email is already in use by another account.",
                 user: req.body,
-                images: await getImages()  // Ensure images are passed even on error
+                images: await getImages()  
             });
         }
 
-        // Check if username is already in use by another user
+        // handle the case that username is already in-use
         const [usernameCheck] = await pool.execute(
             "SELECT * FROM users WHERE username = ? AND user_id != ?", 
             [username, req.session.userId]
@@ -113,23 +173,21 @@ router.post('/', sessionMiddleware, async (req, res) => {
                 title: 'Edit Account', 
                 error: "This username is already taken.",
                 user: req.body,
-                images: await getImages()  // Ensure images are passed even on error
+                images: await getImages()  
             });
         }
 
-        // Hash the new password if it's provided
+        // password hashing
         let updatedPassword = null;
         if (password) {
             updatedPassword = await bcrypt.hash(password, 10);
         }
 
-        // Create the base update query
         let updateQuery = `
             UPDATE users 
             SET username = ?, email = ?, player_name = ?, bio = ?, img_path = ? 
         `;
 
-        // If a password is being updated, add the password_hash field to the query
         let updateParams = [username, email, player_name, bio, img_path];
 
         if (updatedPassword) {
