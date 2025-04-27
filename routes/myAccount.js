@@ -3,6 +3,47 @@ const router = express.Router();
 const pool = require('../database/connection');  
 const sessionMiddleware = require('./sessionMiddleware');
 
+/**
+ * @swagger
+ * /myAccount:
+ *   get:
+ *     summary: Get the current user's account details
+ *     description: Fetches and displays the account details for the logged-in user, including username, email, player name, points, high score, and bio.
+ *     security:
+ *       - sessionAuth: []
+ *     responses:
+ *       200:
+ *         description: Successfully fetched account details
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 username:
+ *                   type: string
+ *                 email:
+ *                   type: string
+ *                 player_name:
+ *                   type: string
+ *                 account_age:
+ *                   type: integer
+ *                 total_points:
+ *                   type: integer
+ *                 high_score:
+ *                   type: integer
+ *                 img_path:
+ *                   type: string
+ *                 bio:
+ *                   type: string
+ *                 admin:
+ *                   type: boolean
+ *       401:
+ *         description: Unauthorized: Please log in
+ *       404:
+ *         description: User not found
+ *       500:
+ *         description: Server error while fetching account details
+ */
 router.get('/', sessionMiddleware, async (req, res) => {
     if (!req.session.userId) {
         return res.status(401).send('Unauthorized: Please log in.');

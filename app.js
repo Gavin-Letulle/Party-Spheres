@@ -10,7 +10,6 @@ const swaggerUI = require('swagger-ui-express');
 const swaggerSpec = require('./swagger');
 
 var homeRouter = require('./routes/home');
-const accountRouterRouter = require('./routes/accountRouter');
 const myAccountRouter = require('./routes/myAccount')
 const editRouter = require('./routes/edit')
 const leaderboardRouter = require('./routes/leaderboard');
@@ -55,7 +54,6 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 // Routers
 app.use('/', homeRouter);
-app.use('/accountRouter', accountRouterRouter);
 app.use('/leaderboard', leaderboardRouter);
 app.use('/game', gameRouter);
 app.use('/login', loginRouter);

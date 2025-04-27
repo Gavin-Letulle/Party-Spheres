@@ -2,6 +2,48 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../database/connection');
 
+/**
+ * @swagger
+ * /profile/{user_id}:
+ *   get:
+ *     summary: Get a user's profile
+ *     description: Fetches the profile of a user by their user_id.
+ *     parameters:
+ *       - name: user_id
+ *         in: path
+ *         description: The ID of the user whose profile is being fetched
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Successfully fetched the user's profile
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 username:
+ *                   type: string
+ *                 player_name:
+ *                   type: string
+ *                 created_at:
+ *                   type: string
+ *                 total_points:
+ *                   type: integer
+ *                 high_score:
+ *                   type: integer
+ *                 bio:
+ *                   type: string
+ *                 img_path:
+ *                   type: string
+ *                 account_age:
+ *                   type: integer
+ *       404:
+ *         description: User not found
+ *       500:
+ *         description: Server error while fetching user profile
+ */
 router.get('/:user_id', async (req, res) => {
     const { user_id } = req.params;
 
