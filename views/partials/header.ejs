@@ -21,6 +21,41 @@
         <div class="heading-img" id="ps1"><img src="/images/ps1.png" alt="PS1"></div>
     </a>
   </header>
+  <% if (typeof showLoginPopup !== 'undefined' && showLoginPopup) { %>
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        const isLoggedIn = "<%= loggedIn ? 'true' : 'false' %>";
+        const username = "<%= username || '' %>";
+  
+        const message = isLoggedIn === "true"
+          ? ` Logged in as ${username}!`
+          : "You are not logged in.";
+  
+        const popup = document.createElement('div');
+        popup.textContent = message;
+        popup.style.position = 'fixed';
+        popup.style.bottom = '20px';
+        popup.style.right = '20px';
+        popup.style.background = isLoggedIn === "true" ? '#73ff8f' : '#f57979';
+        popup.style.color = 'black';
+        popup.style.padding = '12px 18px';
+        popup.style.border = '2px solid black';
+        popup.style.borderRadius = '8px';
+        popup.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
+        popup.style.zIndex = 1000;
+        popup.style.fontWeight = 'bold';
+  
+        document.body.appendChild(popup);
+  
+        setTimeout(() => {
+          popup.remove();
+        }, 4000);
+      });
+    </script>
+  <% } %>
+
+
+  
 
   <header>
     <div class="link-row">

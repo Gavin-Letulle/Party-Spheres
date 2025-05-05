@@ -66,7 +66,8 @@ router.get('/', async (req, res) => {
           happiness: req.session.happiness,
           circle1,
           circle2,
-          circle3
+          circle3,
+          showLoginPopup: true
       });
     // For logged in users
     } else {
@@ -83,7 +84,9 @@ router.get('/', async (req, res) => {
           happiness: req.session.happiness,
           circle1,
           circle2,
-          circle3
+          circle3,
+          showLoginPopup: true
+
       });
     }
   } catch(error) {

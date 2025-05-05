@@ -23,6 +23,7 @@ const profileRouter = require('./routes/profile');
 const playersRouter = require('./routes/players');
 const adminRouter = require('./routes/admin');
 
+
 const db = require('./database/connection'); 
 
 db.query('SELECT NOW() AS time')
@@ -38,6 +39,27 @@ app.use(session({
     saveUninitialized: false,
     cookie: { secure: false, httpOnly: true, maxAge: 1000 * 60 * 60 } // 1 hour session
 }));
+
+app.use(async (req, res, next) => {
+  res.locals.loggedIn = !!req.session.userId;
+
+  if (req.session.userId) {
+    try {
+      const [rows] = await db.execute(
+        "SELECT username FROM users WHERE user_id = ?",
+        [req.session.userId]
+      );
+      res.locals.username = rows.length ? rows[0].username : null;
+    } catch (err) {
+      console.error("Error fetching username for views:", err);
+      res.locals.username = null;
+    }
+  } else {
+    res.locals.username = null;
+  }
+
+  next();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -66,6 +88,7 @@ app.use('/logout', logoutRouter);
 app.use('/edit', editRouter);
 app.use('/players', playersRouter);
 app.use('/admin', adminRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
