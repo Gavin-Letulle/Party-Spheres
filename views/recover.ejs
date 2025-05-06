@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recover Your Account</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body>
+  <div class="recover-wrapper">
+    <h2 class="recover-title">Recover Your Account</h2>
+
+    <form action="/recover" method="POST" class="recover-form">
+
+      <div class="recover-row">
+        <label class="recover-label">Email</label>
+        <input class="recover-input" type="email" name="email" required />
+      </div>
+
+      <div class="recover-row">
+        <label class="recover-label">New Username if lost</label>
+        <input class="recover-input" type="text" name="newUsername" />
+      </div>
+
+      <div class="recover-row">
+        <label class="recover-label">New Password if lost</label>
+        <input class="recover-input" type="password" name="newPassword" />
+      </div>
+
+      <div class="recover-row">
+        <label class="recover-label">Confirm New Password</label>
+        <input class="recover-input" type="password" name="confirmPassword" />
+      </div>
+
+      <button class="recover-submit" type="submit">Submit</button>
+    </form>
+
+    <% if (message) { %>
+      <p class="recover-message"><%= message %></p>
+    <% } %>
+  </div>
+</body>
+</html>

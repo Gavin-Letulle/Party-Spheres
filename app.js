@@ -22,7 +22,8 @@ const characterRouter = require('./routes/character');
 const profileRouter = require('./routes/profile');
 const playersRouter = require('./routes/players');
 const adminRouter = require('./routes/admin');
-
+const recoverRouter = require('./routes/recover');
+const instructionsRouter = require('./routes/instructions');
 
 const db = require('./database/connection'); 
 
@@ -39,26 +40,30 @@ app.use(session({
     saveUninitialized: false,
     cookie: { secure: false, httpOnly: true, maxAge: 1000 * 60 * 60 } // 1 hour session
 }));
+//make certain user login state and username is available 
 
 app.use(async (req, res, next) => {
+  //bool flag in res.local for user logged
   res.locals.loggedIn = !!req.session.userId;
-
+//if user logged get from database
   if (req.session.userId) {
     try {
       const [rows] = await db.execute(
         "SELECT username FROM users WHERE user_id = ?",
         [req.session.userId]
       );
+      
+      //if fund store in res.local for ejs to display
       res.locals.username = rows.length ? rows[0].username : null;
     } catch (err) {
       console.error("Error fetching username for views:", err);
       res.locals.username = null;
     }
-  } else {
+  } else { //not logged able to have null
     res.locals.username = null;
   }
 
-  next();
+  next(); //needed for ejs to look at next requests
 });
 
 // view engine setup
@@ -88,6 +93,8 @@ app.use('/logout', logoutRouter);
 app.use('/edit', editRouter);
 app.use('/players', playersRouter);
 app.use('/admin', adminRouter);
+app.use('/recover', recoverRouter);
+app.use('/instructions', instructionsRouter);
 
 
 // catch 404 and forward to error handler

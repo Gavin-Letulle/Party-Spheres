@@ -67,7 +67,7 @@ router.get('/', async (req, res) => {
           circle1,
           circle2,
           circle3,
-          showLoginPopup: true
+          showLoginPopup: true //flag by ejs for popup and triggers
       });
     // For logged in users
     } else {
@@ -85,7 +85,7 @@ router.get('/', async (req, res) => {
           circle1,
           circle2,
           circle3,
-          showLoginPopup: true
+          showLoginPopup: true //same thing as before
 
       });
     }

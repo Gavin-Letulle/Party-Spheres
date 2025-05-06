@@ -21,16 +21,19 @@
         <div class="heading-img" id="ps1"><img src="/images/ps1.png" alt="PS1"></div>
     </a>
   </header>
-  <% if (typeof showLoginPopup !== 'undefined' && showLoginPopup) { %>
+  <% 
+ if (typeof showLoginPopup !== 'undefined' && showLoginPopup) { %>
     <script>
+      
       window.addEventListener('DOMContentLoaded', () => {
+        //determines if logged in server side if not able to show not logged popup
         const isLoggedIn = "<%= loggedIn ? 'true' : 'false' %>";
         const username = "<%= username || '' %>";
-  
+  //logged in status
         const message = isLoggedIn === "true"
           ? ` Logged in as ${username}!`
           : "You are not logged in.";
-  
+  //stuff to have popup style
         const popup = document.createElement('div');
         popup.textContent = message;
         popup.style.position = 'fixed';
@@ -46,7 +49,7 @@
         popup.style.fontWeight = 'bold';
   
         document.body.appendChild(popup);
-  
+  //4 secs 
         setTimeout(() => {
           popup.remove();
         }, 4000);
