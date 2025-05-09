@@ -24,7 +24,7 @@
   <% 
  if (typeof showLoginPopup !== 'undefined' && showLoginPopup) { %>
     <script>
-      
+      //block before makes certain that if true and this only occur once every other check is true
       window.addEventListener('DOMContentLoaded', () => {
         //determines if logged in server side if not able to show not logged popup
         const isLoggedIn = "<%= loggedIn ? 'true' : 'false' %>";

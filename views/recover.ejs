@@ -37,5 +37,16 @@
       <p class="recover-message"><%= message %></p>
     <% } %>
   </div>
+
+  <hr> 
+  <h3> Recover Username </h3>
+  <p> Need to remeber email to display username </p>
+
+  <form action ='recover/lookup' method= "post" class ="form-box">
+    <label> Email add</label>
+    <input type ="email" name ="email" required/>
+    <button type="submit"> Recover username</button> 
+
+  </form>
 </body>
 </html>
