@@ -103,7 +103,8 @@ router.get('/', async (req, res) => {
  *     description: |
  *       Applies the specified action (compliment, invite, help) to each NPC in the circle.
  *       Updates user session values such as points, high score, and happiness.
- *     requestBody:
+ *        Also retrieves a randomized set of NPCs and injects a popup login status flag (`showLoginPopup`) for EJS views.  
+ *   requestBody:
  *       required: true
  *       content:
  *         application/json:
