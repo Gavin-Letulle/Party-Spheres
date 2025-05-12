@@ -1,52 +1,74 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Recover Your Account</title>
-  <link rel="stylesheet" href="/stylesheets/style.css" />
-</head>
-<body>
-  <div class="recover-wrapper">
-    <h2 class="recover-title">Recover Your Account</h2>
+<%- include('./partials/header', { currentPage: 'recover'}) %>
 
-    <form action="/recover" method="POST" class="recover-form">
+<div style="text-align: center; margin-top: 60px;">
 
-      <div class="recover-row">
-        <label class="recover-label">Email</label>
-        <input class="recover-input" type="email" name="email" required />
-      </div>
+  <!-- Toggle Button as the Title -->
+  <button id="toggleRecovery" class="big-button" style="margin-bottom: 30px;">
+    Switch to Username Recovery
+  </button>
 
-      <div class="recover-row">
-        <label class="recover-label">New Username if lost</label>
-        <input class="recover-input" type="text" name="newUsername" />
-      </div>
+  <!-- Full Account Recovery Form -->
+  <form id="fullRecoveryForm" action="/recover" method="POST" class="recover-form" style="max-width: 500px; margin: 0 auto; text-align: left;">
+    <div class="recover-row" style="margin-bottom: 20px;">
+      <label class="recover-label">Email</label>
+      <input class="recover-input" type="email" name="email" required />
+    </div>
 
-      <div class="recover-row">
-        <label class="recover-label">New Password if lost</label>
-        <input class="recover-input" type="password" name="newPassword" />
-      </div>
+    <div class="recover-row" style="margin-bottom: 20px;">
+      <label class="recover-label">New Username if lost</label>
+      <input class="recover-input" type="text" name="newUsername" />
+    </div>
 
-      <div class="recover-row">
-        <label class="recover-label">Confirm New Password</label>
-        <input class="recover-input" type="password" name="confirmPassword" />
-      </div>
+    <div class="recover-row" style="margin-bottom: 20px;">
+      <label class="recover-label">New Password if lost</label>
+      <input class="recover-input" type="password" name="newPassword" />
+    </div>
 
-      <button class="recover-submit" type="submit">Submit</button>
-    </form>
+    <div class="recover-row" style="margin-bottom: 30px;">
+      <label class="recover-label">Confirm New Password</label>
+      <input class="recover-input" type="password" name="confirmPassword" />
+    </div>
 
-    <% if (message) { %>
-      <p class="recover-message"><%= message %></p>
-    <% } %>
-  </div>
-
-  <hr> 
-  <h3> Recover Username </h3>
-  <p> Need to remeber email to display username </p>
-
-  <form action ='recover/lookup' method= "post" class ="form-box">
-    <label> Email add</label>
-    <input type ="email" name ="email" required/>
-    <button type="submit"> Recover username</button> 
-
+    <div style="text-align: center;">
+      <button class="big-button" type="submit">Submit</button>
+    </div>
   </form>
-</body>
-</html>
+
+  <!-- Username Recovery Only Form -->
+  <form id="usernameRecoveryForm" action="/recover/lookup" method="POST" class="form-box" style="display: none; margin-top: 20px;">
+    <h3>Recover Username</h3>
+    <p>Enter your email to recover your username.</p>
+    <label>Email Address</label><br />
+    <input type="email" name="email" required style="padding: 10px; width: 300px; border-radius: 6px; border: 1px solid #ccc; margin-top: 10px;" />
+    <br><br>
+    <button type="submit" class="big-button">Recover Username</button>
+  </form>
+
+  <% if (message) { %>
+    <p class="recover-message" style="margin-top: 20px;"><%= message %></p>
+  <% } %>
+
+  <!-- Matching Return to Home Button -->
+  <div style="margin-top: 40px;">
+    <a href="/" class="big-button" style="display: inline-block; text-decoration: none; background-color: #ddd; padding: 12px 24px; border-radius: 8px; font-size: 16px; color: white;">
+      Return to Home
+    </a>    
+  </div>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById('toggleRecovery');
+  const fullForm = document.getElementById('fullRecoveryForm');
+  const usernameForm = document.getElementById('usernameRecoveryForm');
+
+  toggleBtn.addEventListener('click', () => {
+    const fullVisible = fullForm.style.display !== 'none';
+    fullForm.style.display = fullVisible ? 'none' : 'block';
+    usernameForm.style.display = fullVisible ? 'block' : 'none';
+    toggleBtn.textContent = fullVisible 
+      ? 'Switch to Full Account Recovery' 
+      : 'Switch to Username Recovery';
+  });
+</script>
+
+<%- include('./partials/footer') %>
