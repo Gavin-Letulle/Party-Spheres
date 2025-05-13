@@ -3,7 +3,7 @@
 <div style="text-align: center; margin-top: 60px;">
 
   <!-- Toggle Button as the Title -->
-  <button id="toggleRecovery" class="big-button" style="margin-bottom: 30px;">
+  <button id="toggleRecovery" class="big-button" style="margin: 0 auto; margin-bottom: 30px;">
     Switch to Username Recovery
   </button>
 
@@ -30,7 +30,7 @@
     </div>
 
     <div style="text-align: center;">
-      <button class="big-button" type="submit">Submit</button>
+      <button class="big-button" id="editButton" style="margin: 0 auto; margin-bottom: -10px" type="submit">Submit</button>
     </div>
   </form>
 
@@ -38,10 +38,10 @@
   <form id="usernameRecoveryForm" action="/recover/lookup" method="POST" class="form-box" style="display: none; margin-top: 20px;">
     <h3>Recover Username</h3>
     <p>Enter your email to recover your username.</p>
-    <label>Email Address</label><br />
+    <label>Email Address:</label><br />
     <input type="email" name="email" required style="padding: 10px; width: 300px; border-radius: 6px; border: 1px solid #ccc; margin-top: 10px;" />
     <br><br>
-    <button type="submit" class="big-button">Recover Username</button>
+    <button type="submit" class="big-button" id="editButton" style="margin: 0 auto; margin-top: 10px; margin-bottom: -10px">Recover Username</button>
   </form>
 
   <% if (message) { %>
@@ -50,7 +50,7 @@
 
   <!-- Matching Return to Home Button -->
   <div style="margin-top: 40px;">
-    <a href="/" class="big-button" style="display: inline-block; text-decoration: none; background-color: #ddd; padding: 12px 24px; border-radius: 8px; font-size: 16px; color: white;">
+    <a href="/" class="big-button" id="editButton" style="margin: 0 auto; margin-bottom: 30px;">
       Return to Home
     </a>    
   </div>

@@ -153,6 +153,10 @@ a {
   background-color: #f39af6;
 }
 
+#instructionsButton {
+  background-color: #73ff8f;
+}
+
 #playGameButton:hover {
   background-color: #17c3da;
 }
@@ -175,6 +179,10 @@ a {
 
 #playersButton:hover {
   background-color: rgb(227, 211, 104)
+}
+
+#instructionsButton:hover {
+  background-color: #6aea84;
 }
 
 #signupButton {
@@ -439,6 +447,15 @@ h2 {
   margin-top: 10px;
 }
 
+#toggleRecovery {
+  font-size: 20px;
+  background-color: #ffc74f;
+  text-decoration: none;
+  display: block;
+  max-width: 250px;
+  margin-top: 10px;
+}
+
 #deleteButton {
   font-size: 18px;
   background-color: #f57979;
@@ -453,6 +470,10 @@ h2 {
 }
 
 #editButton:hover {
+  background-color: #e6b244;
+}
+
+#toggleRecovery:hover {
   background-color: #e6b244;
 }
 
@@ -1302,4 +1323,19 @@ h2 {
   background-color: #0056b3;
 }
 
+.instructions-container {
+  text-align: center;
+}
 
+.instructions-container ul,
+.instructions-container ol {
+  list-style-position: inside;
+  text-align: center;
+  padding-left: 0;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.instructions-container li {
+  margin-bottom: 10px;
+}

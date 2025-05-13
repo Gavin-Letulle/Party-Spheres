@@ -19,6 +19,13 @@ document.addEventListener('DOMContentLoaded', function () {
             window.location.href = "/characters";
         });
     }
+
+    const playersButton = document.getElementById("playersButton");
+    if (playersButton) {
+        playersButton.addEventListener('click', function () {
+            window.location.href = "/players";
+        });
+    }
   
     const accountButton = document.getElementById("accountButton");
     if (accountButton) {
@@ -27,10 +34,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    const playersButton = document.getElementById("playersButton");
-    if (playersButton) {
-        playersButton.addEventListener('click', function () {
-            window.location.href = "/players";
+    const instructionsButton = document.getElementById("instructionsButton");
+    if (instructionsButton) {
+        instructionsButton.addEventListener('click', function () {
+            window.location.href = "/instructions";
         });
     }
+
 });
